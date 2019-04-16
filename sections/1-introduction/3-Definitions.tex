@@ -1,22 +1,26 @@
 \subsection{Defining Key Terms}
-The IoT landscape is often hard to understand, especially because names are defined loosely and  used inconsistently. The same holds true for the cloud. This section will explain key terms and categories as well as their concepts as the foundation to the following report. It will start with IoT followed by cloud relevant terms and topics. \\
+The IoT landscape is often hard to understand, especially as names are defined loosely and  inconsistently. The same holds true for the cloud and terms around cluster technology. This section will explain the network topolgy, key terms and their concepts as the foundation for the following report.\\
 
 \vspace{0.5mm}\\
 \textbf\textit{Network Topology}\\
-These two terms describes where a certain node operates: the infrastructure edge and the device edge.
-The infrastructure edge is mostly operated by network providers
-and are mainly used for networking purposes such as lower latency.
-As such, they are not directly related to IoT and relevant for this report.
+\cref{CNI} shows the network topolgy used in this report. The focus will be on the management and security of the device edge as well as its interaction with the IoT devices themselves. The upper layers like 
+The infrastructure edge is mostly operated by network providers and are mainly used for networking purposes such as lower latency. As such, they are not directly related to IoT and relevant for this report.
 On the contrary, the device edge is where the networking happens
 
-
-
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=1.8]{figures/iotSetup.png}
+    \caption{Network Topology inspired by \cite{iotGatewaySlavesGraph}.}
+    \label{fig:netowrkTopology}
+\includegraphics{}
 
 \vspace{0.5mm}\\
 \textbf{\textit{Constrained Device}}\\
-Constraint devices are the elementary part of the IoT making up the "things" or devices\cite{contstraintDevicesTerminology}.
+Constraint devices are the elementary part of the IoT 
+making up the "things" or devices\cite{contstraintDevicesTerminology}.
 They can have three main purposes.
-Either sensing or actuating (or both), where sensing is the passive action of measuring the environment (e.g. a motion detector) and actuating is the active action of influencing the environment (e.g. control of pressure in test tube). Or, finally, they can be smart objects enhancing the interaction between other smart objects and people.\\
+Either sensing or actuating (or both), where sensing is the 
+passive action of measuring the environment (e.g. a motion detector) and actuating is the active action of influencing the environment (e.g. control of pressure in test tube). Or, finally, they can be smart objects enhancing the interaction between other smart objects and people.\\
 They are usually defined by their limitation, mainly, small computing power (CPU, RAM, storage etc.) and limited power supply and operate in constrained network\footnote{See \cite{contstraintDevicesTerminology} page 5 for more information.}.\\
 In summary, it is fair to assume that many constrained devices have very limited computing power, operate on battery in constrained networks using protocols like BLE and ZigBee. \\
 
@@ -51,7 +55,9 @@ They are more powerful edge nodes, often packing additional hardware like GPUs o
 However, emerging technologies like tiny builds of a full Kubernetes cluster
 like K3s from Rancher Labs\cite{k3sLight14:online} make this distinction 
 between edge nodes and edge clusters
-increasingly difficult\footnote{Rancher provides a  40MB Kubernetes binary and claims that 500MB of RAM is sufficient it stable.}.\\
+increasingly difficult
+\footnote{Rancher provides a 40MB Kubernetes binary and claims that 500MB of RAM is sufficient 
+it stable.}.\\
 Because of their similarities, in this report the distinction between edge nodes and clusters will be solely
 made up on the cluster topology separating them on an architectural level.
 
