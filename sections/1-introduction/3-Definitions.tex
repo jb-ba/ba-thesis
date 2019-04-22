@@ -28,7 +28,7 @@ Smart devices are often not clearly defined in the academic literature, in this 
 \textbf{\textit{IoT Gateway}}\\
 IoT Gateways are the connection between smart devices and a network, this could be a local network or even the Internet. They facilitate inter-network and intra-network communications and because smart devices and especially constrained devices often communicate via wireless and non-Internet protocols, IoT gateways often translate protocols "between wireless sensor networks [...] traditional communication networks"\cite{zhu2010iotGatewayDefinition}.
 In recent years IoT Gateways have become a major field of interest and new research. As these devices got more powerful, developers started using them for preprocessing and datagathering locally at the edge.
-In conclusion, IoT gateways can take a wide variety of forms. They can be simple L3 routers or more powerful devices. Importantly, they are situated at the edge of a network and act as bridge between two autonomous systems.
+In conclusion, IoT gateways can take a wide variety of forms. They can be simple L3 routers or more powerful devices. Importantly, they are situated at the edge of a network and act as bridge between two autonomous systems.\\
 \vspace*{0.5mm} \ \\
 \textbf{\textit{Edge node}}\\
 Edge nodes are defined as nodes "that act as an end user portal for communication with other
@@ -36,7 +36,7 @@ nodes in cluster computing"\cite{Whatised17:edgeNodeDef}.
 It operates on the edge, it must be able to run containers, has far inferior processing power compared to servers and can (only) run as a worker node (also known as a minion in kubernetes)\cite{NodesKub7:edgeNodeMinion}. Note that, this is in contrast to IBM which defines edge nodes as ingress traffic nodes in a cluster\cite{IBMCloudEdgeNodes0:online}.
 In this report an edge node is a powerful IoT gateway situated at the edge of the network. Because of new and exciting developments it will not be restricted by the type of software it can run (it can thus be a master node as well), but rather by its network topology and mobility. It is a node without reliable and fast connection to the rest of the network, does not need a static IP and is (somewhat) portable\footnote{Comparing edge nodes to cloud nodes is also common academic practice\cite{contstraintDevicesTerminology}  but not considered at this point.}.
 Reoccurring themes are the restrictions compared to cloud clusters, which are smaller processing power,
-no permament connection to the backbone network and greater portability.
+no permament connection to the backbone network and greater portability.\\
 \vspace{0.5mm} \ \\
 \textbf{\textit{Edge cluster}}\\
 The term edge cluster is closely related to cluster technologies like Kubernetes or Mesos.
