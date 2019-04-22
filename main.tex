@@ -19,9 +19,11 @@
 \usepackage[toc,page]{appendix}
 
 % \usepackage[backend=bibtex,style=authoryear-icomp,sortlocale=de_DE,natbib=true,url=false, doi=true,eprint=false]{biblatex}
-\usepackage{biblatex}
-\bibliographystyle{ieeetr}
+\usepackage[style=ieee, backend=biber]{biblatex}
+% \bibliographystyle{ieeetr}
 \bibliography{bibl.bib}
+\addbibresource{bibl.bib}
+\include{bibl.bib}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -85,6 +87,6 @@
  
  \pagenumbering{arabic}
  
-\input{append.tex}
+% \input{append.tex}
 
 \end{document}
