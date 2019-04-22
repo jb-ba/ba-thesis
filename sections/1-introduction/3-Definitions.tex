@@ -3,16 +3,17 @@ The IoT landscape is often hard to understand, especially as names are defined l
 
 \vspace{0.5mm}\\
 \textbf\textit{Network Topology}\\
-\cref{CNI} shows the network topolgy used in this report. The focus will be on the management and security of the device edge as well as its interaction with the IoT devices themselves. The upper layers like 
-The infrastructure edge is mostly operated by the network providers and is mainly used to improve network characteristics such as lower latency. Devices operating in this layer are not directly related to IoT and thus less relevant for this report.\\
-On the contrary, the device edge is respsonsible for the networking and data plane of the indivudual IoT devices. Their data can be aggregated and processed on this layer. 
-
+\Cref{fig:netowrkTopology} shows the network topolgy used in this report. The focus will be on the management and security of the device edge as well as its interaction with the IoT devices themselves. 
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=1.8]{figures/iotSetup.png}
     \caption{Network Topology inspired by \cite{iotGatewaySlavesGraph}.}
     \label{fig:netowrkTopology}
 \includegraphics{}
+The upper layers like 
+The infrastructure edge is mostly operated by the network providers and is mainly used to improve network characteristics such as lower latency. Devices operating in this layer are not directly related to IoT and thus less relevant for this report.\\
+The device edge is operated by normal households and other non network-related businesses. It is respsonsible for the control and data plane of the constrained devices (explained below). This layerThe data from these devices can be aggregated and processed on . 
+
 
 \vspace{0.5mm}\\
 \textbf{\textit{Constrained Device}}\\
@@ -40,8 +41,7 @@ In conclusion, IoT gateways can take a wide variety of forms. They can be simple
 Edge nodes are defined as nodes "that act as an end user portal for communication with other
 nodes in cluster computing"\cite{Whatised17:edgeNodeDef}.
 It operates on the edge, it must be able to run containers, has far inferior processing power compared to servers and can (only) run as a worker node (also known as a minion in kubernetes)\cite{NodesKub7:edgeNodeMinion}. Note that, this is in contrast to IBM which defines edge nodes as ingress traffic nodes in a cluster\cite{IBMCloudEdgeNodes0:online}.
-
-Thus, in this report an edge node is a powerful IoT gateway situated at the edge of the network. But because of emerging technologies it will not be restricted by the type of software it can run (it can thus be a master node as well), but rather by its network topology and mobility. It is a node without reliable and fast connection to the rest of the network, does not need a static IP and is (somewhat) portable\footnote{Comparing edge nodes to cloud nodes is also common academic practice\cite{contstraintDevicesTerminology}  but not considered at this point.}.
+In this report an edge node is a powerful IoT gateway situated at the edge of the network. Because of new and exciting developments it will not be restricted by the type of software it can run (it can thus be a master node as well), but rather by its network topology and mobility. It is a node without reliable and fast connection to the rest of the network, does not need a static IP and is (somewhat) portable\footnote{Comparing edge nodes to cloud nodes is also common academic practice\cite{contstraintDevicesTerminology}  but not considered at this point.}.
 Reoccurring themes are the restrictions compared to cloud clusters, which are smaller processing power,
 no permament connection to the backbone network and greater portability.
 
