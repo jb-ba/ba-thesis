@@ -3,9 +3,9 @@ Traditionally, edge devices were isolated cluster heads mainly forwarding traffi
 First,
 % https://scholar.google.com/scholar?cluster=13680069378267225814&hl=de&as_sdt=0,5
 
-\subsection{IoT Gateway Solutions}
+\subsection{Traditional IoT Gateway Solutions}
 https://www.bosch-iot-suite.com/service/gateway-software/
-IoT gateway solutions include all technologies which do not involve orchestration based on containers. I will diferentiate between two categories, solutions based on non-orchestration and orchestrated solutions. The former are non interactive system or solutions without a central control plane. They are usually pre-installed by an OEM and hard to update and maintain. Orchestrated solutions on the other hand offer a central configuration point, so a shared control plane between multiple gateways. These solutions were specifically developed for a distributed and large scale IoT environemnt. In many ways they are comparable to the solutions described in the next two subchapters, but are not developed with containerization at its foundation. The OSGi technology\cite{osgiDefintion25:online} is a aliance driven project from the Open Services Gateway initiative. It is a set of specifications (with reference implemetation and tests) for a dynamic modular system based on so called bundles, third party software, running on the Java Virtual Machine (JVM)\footnote{This means it is possible to use other languages apart from Java which can run in a JVM, e.g. Kotlin.}. The solution consists of a layered model shown in \cref{fig:osgiLayerModel}. 
+Traditional IoT gateway solutions include all technologies which do not involve orchestration based on containers. I will diferentiate between two categories, solutions based on non-orchestration and orchestrated solutions. The former are non interactive system or solutions without a central control plane. They are usually pre-installed by an OEM and hard to update and maintain. Orchestrated solutions on the other hand offer a central configuration point, so a shared control plane between multiple gateways. These solutions were specifically developed for a distributed and large scale IoT environemnt. In many ways they are comparable to the solutions described in the next two subchapters, but are not developed with containerization at its foundation. The OSGi technology\cite{osgiDefintion25:online} is a aliance driven project from the Open Services Gateway initiative. It is a set of specifications (with reference implemetation and tests) for a dynamic modular system based on so called bundles, third party software, running on the Java Virtual Machine (JVM)\footnote{This means it is possible to use other languages apart from Java which can run in a JVM, e.g. Kotlin.}. The solution consists of a layered model shown in \cref{fig:osgiLayerModel}. 
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=1.8]{figures/layering-osgi.png}
@@ -13,15 +13,14 @@ IoT gateway solutions include all technologies which do not involve orchestratio
     \label{fig:osgiLayerModel}
 \end{figure}
 The Service layer interconnects the bundles makingit possible for them to communicate via plain old java objects (POJO).The Life-Cycle layer handles the the state of the application (start, stop, update and uninstall). The Modules layer defines how an application can import and export code and the Execution Environemnt defines which methods and classes are available in a specific environemnt. Finally, the Security layer encompases all other layers and handles for example code authentication, the digital signing of jar files, file access restrictions, certificates and more.\\
-To my best of the authors knowledge there are six framework currently implementing the OSGi model. One such solution is the Bosch IoT Gateway Software\cite{BoschIoT13:online}. In a blog entry from 2015 Bosch compares the OSGi to other gateway solutions and says it "is the only one with clearly defined specs and an open specification process behind them"\cite{boschBlogOSGi69:online}. It is proprietary solution developed by Bosch and tailer made for edge-computing middleware. It runs on Linux, Windows, mac OS, Android, and VxWorks and according to Bosch more than 40 different gateway devices\cite{BoschIoT13:online}.
-
+To the authors best knowledge there are currently six frameworks implementing the OSGi model. One such solution is the Bosch IoT Gateway Software\cite{BoschIoT13:online}. In a blog entry from 2015 Bosch compares the OSGi technology to other gateway solutions and says it "is the only one with clearly defined specs and an open specification process behind them"\cite{boschBlogOSGi69:online}. Boschs solution is proprietary and tailer made for edge-computing devices with IIoT in mind\cite{OSGiforIoTBlog27:online}. It runs on Linux, Windows, mac OS, Android, and VxWorks and according to Bosch more than 40 different gateway devices\cite{BoschIoT13:online}. The software is stable at major version 9 and still under heavy development. Because of these reasons, it is used as an examplary solution. \Cref{fig:boschIoTGatewaySetup} shows where Boschs IoT solution is situated in the IoT environment. Bosch provides the OSGi framework implementation for the gateways and additional features for the cloud to ease the management of the gateways and store the accumulated data.
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=1.8]{figures/iotSetup.png}
     \caption{From the official Bosch documentation \cite{BoschIoT13:online}.}
     \label{fig:boschIoTGatewaySetup}
 \end{figure}
-
+A strong argument for this solution is the number of protocols it supports (BLE, ZigBee and MQTT, just to name a few) as well as its maturity.
 
 
 
