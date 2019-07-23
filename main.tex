@@ -1,51 +1,21 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[a4paper]{article}
 \renewcommand{\baselinestretch}{1.5} 
-\usepackage[toc,page]{appendix}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}	
-\usepackage[english]{babel}
-\usepackage{graphicx}
-% \usepackage[fontsize=14]{scrextend}
-\usepackage{fancyhdr}
-\usepackage{geometry}
-\usepackage{varwidth}
-\usepackage{chngpage}
-\usepackage{array}
-\usepackage{makecell}
-\usepackage{float}
-\usepackage{pdfpages}
-\usepackage{svg}
-\usepackage[noabbrev]{cleveref}
-\usepackage[toc,page]{appendix}
+\input{cmds/packages.tex}
 
-% \usepackage[backend=bibtex,style=authoryear-icomp,sortlocale=de_DE,natbib=true,url=false, doi=true,eprint=false]{biblatex}
-\usepackage[style=ieee, backend=biber]{biblatex}
-% \bibliographystyle{ieeetr}
 \bibliography{bibl.bib}
 \addbibresource{bibl.bib}
 \include{bibl.bib}
 
-\pagestyle{fancy}
-\fancyhf{}
-% \title{Gaming Systems}
-\title{Orchestration in the Internet of Things -\\ Towards a fully Integrated Solution}
-\author{Jonas Burster - 20165136\\jburst16@student.aau.dk}
-
-
-\date{xx.xx.2019}
-\pagestyle{fancy}
-\makeatletter
-\let\runtitle\@title
-\let\runauthor\@author
-\makeatother
-\lhead{\runtitle}
-\rhead{Jonas Burster}
-
 \graphicspath{{pictures/}}
+
+\input{cmds/lstlistingSkipLines.tex}
+\input{cmds/emptyCmd.tex}
+\input{cmds/sectionHeaders.tex}
+% \input{cmds/titlePage.tex}
 
 \begin{document}
 % \includepdf[pages=-]{PDF/page_0.pdf}
-\maketitle
+% \maketitle
 
 % \begin{figure}
 % \vspace{-18cm}
@@ -69,12 +39,10 @@
 \pagenumbering{arabic}
 % \input{structure.tex}
 % \input{sections/glossary.tex}
-\input{sections/1-introduction/0-structure.tex}
-\input{sections/2-extendedSota/0-structure.tex}
-% \input{2.tex}
-% \input{3.tex}
-% \input{4.tex}
-% \input{5.tex}
+% \input{sections/1-introduction/0-structure.tex}
+% \input{sections/2-extendedSota/0-structure.tex}
+\input{sections/3-analysis/0-structure.tex}
+% \input{sections/4-implementation/0-structure.tex}
 \clearpage
 
 \printbibliography[heading=bibintoc]
