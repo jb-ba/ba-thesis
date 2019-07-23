@@ -1,0 +1,25 @@
+\lstset{
+numbers=left, 
+basicstyle=\footnotesize,
+frame = single, 
+language=Pascal, 
+framexleftmargin=16pt,
+% captionpos=b,
+xleftmargin=2.3cm,
+}
+\begin{lstlisting}[linewidth=13cm, caption={The manifest of the \textit{hello} service.},label={lst:serviceManifest}]
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-service
+  namespace: hello-namespace
+spec:
+  type: NodePort
+  selector:
+    app: hello
+  ports:
+    - name: http
+      nodePort: 30001
+      port: 3000
+      targetPort: 3000
+\end{lstlisting}

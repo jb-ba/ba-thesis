@@ -1,3 +1,40 @@
+\section{Implementation} \label{sec:implementation}
+The implementation is based on a Kubernetes master in the cloud and and one worker on-premises. The master runs on a virtual private server (VPS) from Contabo\cite{online:ContaboWebsite}. 
+It has four cores, a minimum of 10 gigabyte of RAM and runs Ubuntu 18.10, which is more then the official Kubernetes requirments\cite{kubernetesRequirementsInstall:online}. 
+In an interview with Oracle Cloud Platform Architect Allan H{\o}jgaard Jensen he said "only bare metal offers the best speeds". However, getting a full server was not possible and would have not changed much, as performance on the master is not an issue. The worker is a raspberry pi model 3b+ on bare metal as here performance is critical. 
+It only has one gigabyte of RAM and runs on ARMv7, based on a 32-bit architecture. Even though it meets the Kubernetes system requirements for workers it is generally not recommended by the Kubernetes developers. But, as the Raspberry Pi 3b+ is one of the most popular single-board computers and often used in IoT project, I use it in this thesis as well. \Cref{fig:baSetup} shows the architectural setup of this thesis.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.15]{figures/baSetup.png}
+    \caption{Thesis implementation setup.}
+    \label{fig:baSetup}
+\end{figure}
+I will divide the implementation in different stages to describe better what challenges arise from using Kubernetes on the edge as IoT Gateway. In stage one I just setup the system, installing the edge device and joining it to the master. In stage two, I will deploy a example application to the edge device controlled from the Kubernetes master and I will explain in more detail the build steps for the containers. In stage three the IoT components will be deployed. This includes a MQTT server inside Kubernetes and a microcontroller subscribing and publishing to that server. The master should also be able to initiate updates to IoT devices which support OTA updates from the Raspberry Pi. In stage 4 further features will be implemented. Finally, in stage 5 I will come back and revisit and try to implement issues I found in the stages before.\\
+
+
+\input{sections/4-implementation/1-install.tex}
+\input{sections/4-implementation/2-simpleService.tex}
+
+\comment{
+\bgroup\obeylines
+Kubernetes in the cloud
+Node running locally with HiveMQ on a raspberry pi
+HiveMQ is running as container
+Static vs non static ip (only static ip atm)
+connected to esp32 devices
+\egroup
+}
+
+
+
+
+
+\comment{
 Kubeedge
 OTA update to esp32
 https://randomnerdtutorials.com/esp32-over-the-air-ota-programming/
+
+
+
+
+}

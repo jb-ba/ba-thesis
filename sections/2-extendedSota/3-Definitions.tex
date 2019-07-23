@@ -1,15 +1,23 @@
-\subsection{Defining Key Terms}
-The IoT landscape is often hard to understand, especially as names are defined loosely and  inconsistently. The same holds true for the cloud and terms around cluster technology. This section will explain the network topolgy, key terms and their concepts as the foundation for the following report.\\
+\comment{
+https://www.iaria.org/conferences2016/filesICSNC16/Softnet2016_Tutorial_Fog-MEC-Cloudlets-E.Borcoci-v1.1.pdf
+
+this paper has it nailed down with terms https://arxiv.org/pdf/1812.00591.pdf 
+}
+
+\subsection{Definitions} \label{sec:definitions}
+The IoT communication landscape is often hard to understand, especially because terms are loosely and inconsistently defined. The same is true for the cloud but to a lesser extend. It uses less diverse technologies and which makes it less confusion. This section will explain the network topology, key terms and their concepts as the foundation for the following report.\\
 \vspace{0.5mm} \ \\
 \textbf{\textit{Network Topology}}\\
-\Cref{fig:netowrkTopology} shows the network topolgy used in this report. The focus will be on the management and security of the device edge as well as its interaction with the IoT devices themselves. 
+\Cref{fig:networkTopology3Layer} shows the network topology used in this report. 
+% The focus will be on the management and security of the device edge as well as its interaction with the IoT devices themselves. 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=1.8]{figures/iotSetup.png}
-    \caption{Network Topology inspired by \cite{iotGatewaySlavesGraph}.}
-    \label{fig:netowrkTopology}
+    \includegraphics[scale=0.15]{figures/network-topology-3-layer.png}
+    \caption{Three tier layer network topology, similar to \cite{nsa2017NextWaveIoTDef}}
+    \label{fig:networkTopology3Layer}
 \end{figure}
-The upper layers two layers, the cloud and infrastructure edge, and their connections are all operated by big telecompanies and content providers. The cloud is on demand available data storage and processing power. The infrastructure edge is operated by the network providers and is mainly used to provide access to the network to households and companies. It provides some services, e.g. to improve network characteristics such as to lower latency. But, devices operating in this layer are not directly related to IoT and thus excluded in this report.\\
+
+The upper two layers, the cloud and cloudlets, have a shared control plane. In case the edge deploys its own control plane without connection to the cloud, we will still refer to these devices as cloudlets. The cloud is defined by always available and infinite data storage and processing power. In  is operated by the network providers and is mainly used to provide access to the network to households and companies. It provides some services, e.g. to improve network characteristics such as to lower latency. But, devices operating in this layer are not directly related to IoT and thus excluded in this report.\\
 The device edge is operated by normal households and other non network-related businesses. It is respsonsible for the control and data plane of the constrained devices (explained below). The data produced from these devices can be aggregated and processed in this layer. The benefits of doing so are discussed in chapter xxx.
 
 \vspace{0.5mm} \ \\
@@ -22,11 +30,11 @@ passive action of measuring the environment (e.g. a motion detector) and actuati
 They are usually defined by their limitation, mainly, small computing power (CPU, RAM, storage etc.) and limited power supply and operate in constrained network\footnote{See \cite{contstraintDevicesTerminology} page 5 for more information.}.\\
 In summary, it is fair to assume that many constrained devices have very limited computing power, operate on battery in constrained networks using protocols like BLE and ZigBee. \\
 \vspace{0.5mm} \ \\
-\textbf{\textit{Smart devices}}\\
-Smart devices are often not clearly defined in the academic literature, in this report I will use the definition given by \citeauthor{poslad2011smartDevices}\cite{poslad2011smartDevices}, to clearly divide them from constrained devices. They are traditional computing devices and "tend to be multi purpose ICT devices"\cite{poslad2011smartDevices}, examples are mobile phones (smart phones) or tablets. They connect to the rest of the infrastructure directly but are free to move between networks. They also often rely on battery power and, importantly, are mainly end user devices. This has important privacy implication when using their computing power for computations on the edge. \textbf{(I should pick this up somewhere in the report or go more in detail here).}\\
+\textbf{\textit{Smart/mobile devices}}\\
+Smart devices are not clearly defined in the academic literature. In this report I will use the definition given by \citeauthor{poslad2011smartDevices}\cite{poslad2011smartDevices}, to clearly divide them from constrained devices. They are traditional computing devices and "tend to be multi purpose ICT devices"\cite{poslad2011smartDevices}, examples are mobile phones (smart phones) or tablets. They connect to the rest of the infrastructure directly but are free to move between networks. They also often rely on battery power and, importantly, are mainly end user devices. This has important privacy implication and is a major factor for edge computing.\\
 \vspace{0.5mm} \ \\
 \textbf{\textit{IoT Gateway}}\\
-IoT Gateways are the connection between smart devices and a network, this could be a local network or even the Internet. They facilitate inter-network and intra-network communications and because smart devices and especially constrained devices often communicate via wireless and non-Internet protocols, IoT gateways often translate protocols "between wireless sensor networks [...] traditional communication networks"\cite{zhu2010iotGatewayDefinition}.
+IoT Gateways are the connection between constrained devices and a network, this could be a local network or even the Internet. They facilitate inter-network and intra-network communications and because smart devices and especially constrained devices often communicate via wireless and non-Internet protocols, IoT gateways often translate protocols "between wireless sensor networks [...] traditional communication networks"\cite{zhu2010iotGatewayDefinition}.
 In recent years IoT Gateways have become a major field of interest and new research. As these devices got more powerful, developers started using them for preprocessing and datagathering locally at the edge.
 In conclusion, IoT gateways can take a wide variety of forms. They can be simple L3 routers or more powerful devices. Importantly, they are situated at the edge of a network and act as bridge between two autonomous systems.\\
 \vspace*{0.5mm} \ \\
@@ -52,4 +60,17 @@ increasingly difficult
 it stable.}.\\
 Because of their similarities, in this report the distinction between edge nodes and clusters will be solely
 made up on the cluster topology separating them on an architectural level.
+
+\vspace{0.5mm} \ \\
+\textbf{\textit{Infrastructure Edge}}\\
+Should this be included
+
+\vspace{0.5mm} \ \\
+\textbf{\textit{Device Twin}}\\
+Should this be included
+
+\vspace{0.5mm} \ \\
+\textbf{\textit{Cloudlet}}\\
+Should this be included
+
 
