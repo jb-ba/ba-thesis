@@ -1,7 +1,6 @@
 \section{Analysis} \label{sec:analysis}
-The analysis section will be split into different segments: Container technology, Kubernetes, Edge protocols and the IoT/edge stack, and, finally, the requirements for the implementation. Essentially, the analysis will be the foundation of the implementation giving reason to the major design choices described in the requirements.
-In this thesis I will deploy containers to the edge using Kubernetes to see what is missing and what features already enable Kubernetes to make this possible.
-Standardization of the edge is going to be key.
+The analysis section will be split into different segments: Container technology, Kubernetes, Edge protocols and the IoT/edge stack, and, finally, the requirements for the implementation. Essentially, the analysis will be the foundation of the implementation giving reason to the major design choices described in the requirements. The critical areas for the edge are: memory and disk space constrains, security, speed, protocols, loadbalancing and internet access.\\
+In this thesis I will deploy containers to the edge using Kubernetes to determine what is still missing and what features already enable Kubernetes to make this possible. Standardization of the edge is going to be key.
 
 % \input{sections/3-analysis/1-containers.tex}
 \input{sections/3-analysis/2-kubernetes.tex}
@@ -11,4 +10,13 @@ Standardization of the edge is going to be key.
 
 \comment{In fact, a new Kubernetes IoT Working Group is investigating how it can provide a consistent deployment model for IoT cloud and IoT Edge.
 https://blog.bosch-si.com/bosch-iot-suite/why-the-iot-needs-kubernetes/
+
+WHTA is important for edge? 
+small containers
+internet access (function without)
+security
+Speed (kubelet)
+protocols
+
+
 }
