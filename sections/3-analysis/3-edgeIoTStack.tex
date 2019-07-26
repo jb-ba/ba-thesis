@@ -1,7 +1,9 @@
 \subsection{The IoT/Edge Problems}
-Resource consumption and orchestration are big problems in the cloud. But, that does not mean they are not equally, or even more so, for the edge. Containers and Kubernetes can be adopted to consume less resources and Kubernetes enables remote orchestration of on-prem nodes. Because of the heterogenity of the edge, it faces even more problems. Discussed in this section will be load balancing, protocol conversion and traffic shaping.
+Resource consumption and orchestration are big problems in the cloud and equally so for the edge. Containers and Kubernetes can be adopted to consume less resources and Kubernetes enables remote orchestration of on-prem nodes. But, because of the heterogeneity of the edge, it faces even more problems. Discussed in this section will be load balancing, protocol conversion and traffic shaping.\\ Not thoroughly discussed in this section will be the issue of ultra low latency. In an updated performance assessments of containers the authors found that containers introduce almost no overhead over a native deployment\cite{felter2015updatedPerformanceContainers}. Hence, gateways running Linux can in most cases use containers without a problem. 
 
-
+\input{sections/3-analysis/iotEdgeProblems/loadBalancing.tex}
+\input{sections/3-analysis/iotEdgeProblems/trafficShaping.tex}
+\input{sections/3-analysis/iotEdgeProblems/protocolConverstaion.tex}
 
 \comment{
 protocol conversation
