@@ -9,11 +9,12 @@ It only has one gigabyte of RAM and runs on ARMv7, based on a 32-bit architectur
     \caption{Thesis implementation setup.}
     \label{fig:baSetup}
 \end{figure}
-I will divide the implementation in different stages to describe better what challenges arise from using Kubernetes on the edge as IoT Gateway. In stage one I just setup the system, installing the edge device and joining it to the master. In stage two, I will deploy a example application to the edge device controlled from the Kubernetes master and I will explain in more detail the build steps for the containers. In stage three the IoT setup will be deployed. This includes a MQTT server inside Kubernetes and a microcontroller subscribing and publishing to that server. The master should also be able to initiate updates to IoT devices which support OTA updates from the Raspberry Pi. In stage 4 further features will be implemented. Finally, in stage 5 I will come back and revisit and try to implement issues I found in the stages before.\\
+I will divide the implementation in different stages to describe better what challenges arise from using Kubernetes on the edge as IoT Gateway. In stage one I just setup the system, installing the edge device and joining it to the master. In stage two, I will deploy a example application to the edge device controlled from the Kubernetes master and I will explain in more detail the build steps for the containers. In stage three the IoT setup will be deployed. This includes a CoAP server inside Kubernetes and a microcontroller sending data to that server. The master should also be able to initiate updates to IoT devices which support OTA updates from the Raspberry Pi. In stage 4 further features will be implemented. Finally, in stage 5 I will come back and revisit and try to implement issues I found in the stages before.\\
 
 
-\input{sections/4-implementation/1-install.tex}
-\input{sections/4-implementation/2-simpleService.tex}
+% \input{sections/4-implementation/1-install.tex}
+% \input{sections/4-implementation/2-simpleService.tex}
+\input{sections/4-implementation/3-Deployment.tex}
 
 \comment{
 \bgroup\obeylines
