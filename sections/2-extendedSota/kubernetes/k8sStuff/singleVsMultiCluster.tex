@@ -1,0 +1,12 @@
+% \subsubsection{Single vs. Multi-Cluster} \label{sec:singleVsMultiCluster}
+Single cluster Kubernetes provides many techniques to isolate and allocate resources. It is recommended for all but very big or multi-cloud deployments, but has limitations which could be especially crucial on the edge. The official Kubernetes distribution has a multi-cluster management tool called Kubernetes Cluster Federation (KubeFed)\cite{kubernetesFederation97:online}. It provides another layer of fault isolation and because of multiple ingresses it enables low latency and scalability across regions. But requires additional management on top of Kubernetes already complicated control plane and is thus important for big deployments with high system requirements, multi-cloud solutions and edge deployments.\\
+Google recently revealed a new and much hyped product, Anthos\cite{TechnicalAnthosGoogle66:online}. Its a combination of many services, but most importantly it lets people easily manage multi cluster deployments. Google describes it as follow: ``Anthos is a modern application management platform that provides a consistent development and operations experience for cloud and on-prem environments''\cite{TechnicalAnthosGoogle66:online}. Google provides an installer for on-prem devices but once installed Google itself manages the cluster including updates and troubleshooting. Not only is it a multi-cluster solution, but it also integrates the clusters with the Istio service mesh, providing unified communication and communication logs, and additional tools to ease the management. Anthos represents an industry wide trend for multi-cluster and multi-cloud solutions but is closed source. Compared to Anthos, Kubefed lacks many of features for easier management and is still in alpha status and thus not recommended for use in production environments.\\
+
+
+
+\comment{
+These will not fade away and still be important. Finally, Docker's strong selling point of its cloud edge solution is its mirrored registry and neat features around it. It is possible though to setup a Docker Hub\footnote{The official Docker registry for images \url{https://hub.docker.com/}.} mirror for on-prem solutions. 
+
+
+}
+
