@@ -1,13 +1,18 @@
-\subsection{The IoT/Edge Problems} \label{edgeIoT}
-The heterogenity of the edge has given rise to the development of very different protocols and standards. Communication is not the only differentiator from the cloud however. Load balancing and traffic shaping is significantly different on the edge. For starters, nodes do not need 
-Not thoroughly discussed in this section will be the issue of ultra low latency. 
-\vspace{0.5mm} \ \\
-\textbf{\textit{Single vs. Multi-Cluster}}\\
+\subsubsection{The IoT/Edge Problems} \label{edgeIoT}
+*** Put this under Kubernetes and elimiate protocol stuff***
+
+The heterogenity of the edge has given rise to the development of very diverse protocols and standards. Communication is not the only differentiator from the cloud however. Load balancing and traffic shaping is significantly different on the edge. For starters, cloud nodes seldomly lose Internet connection or run out of processing power. They also have very fast connections. Not discussed in this section will be the issue of ultra low latency. \\[0.5mm]
+
+\textbf{\leftskip25mm\textit{Load Balancing}}\\
 \input{sections/2-extendedSota/iotEdgeProblems/loadBalancing.tex}
+\textbf{\leftskip25mm\textit{Traffic Control and Shaping}}\\
 \input{sections/2-extendedSota/iotEdgeProblems/trafficShaping.tex}
+\textbf{\leftskip25mm\textit{IoT Protocols and Protocol Conversation}}\\
 \input{sections/2-extendedSota/iotEdgeProblems/protocolConverstaion.tex}
 
 \comment{
+
+
 protocol conversation
 Traffic shaping
 Load balacing

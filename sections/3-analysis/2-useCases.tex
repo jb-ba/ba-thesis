@@ -1,0 +1,22 @@
+\subsection{Use Cases}
+Kubernetes can be deployed on most devices running Linux including many single-board computers like the Raspberry Pi. Using Kubernetes comes with the benefit of full orchestration from the cloud. That means, once a desired state is provided to the Kubernetes master it will work towards achieving this desired state and once the desired state is left, it will try to restore it. The main downside of this is its processing overhead. The kubelet runs a house keeping process in the background which checks in periods if everything is well and synchronizes its state with the master. In Kubernetes applications are deployed via containers which were shown in \cref{sec:containers} to have little overhead over native applications.
+Thus, if an IoT gateway has sufficient resources to run Kubernetes and if the system does not have real time requirements, then Kubernetes can be an excellent choice. Following are three examples where Kubernetes could be of help. 
+
+\subsubsection{Data Pre-Processing and Aggregation in IIoT}
+Sensors inside factories produce vast amounts of data which in turn often control actuators. This sensing and reacting can be time sensitive but once a task is fulfilled the data can be aggregated. In a tube factory multiple sensors could analyze the seam of each tube and send the data to an IoT gateway. On the IoT gateway the data is analyzed and rate the quality. According to the rating an actuator then chooses on which factory line the tubes end up. The IoT gateway also controls the quality of the sensor measurements and makes sure no sensor is constantly far from the average evaluation. In case a sensor does just that, it could send a warning signal to the server where it could be further processed. Additionally, each hour the IoT gateway uploads the aggregated statistics of the tube quality to a server. There it can be stored and further analyzed.\\
+
+
+
+\subsubsection{Smart Stores}
+In a smart store cameras and sensors are constantly monitoring the consumers and items. Because of its size, the devices operate in a distributed environment communicating with different IoT gateways which in turn have to be synchronized. Kubernetes enables this layer of synchronization with distributed databases.\\
+As the software of these stores is constantly evolving and needs patching with Kubernetes it would be easy to schedule updates remotely. But not only would it permit individual device updates, but also synchronized rolling updates. This means, all devices would seemingly update at the same time. They would download the new software and only when it is ready, shutdown the old application and start the new one.
+
+\subsubsection{Predictive Maintenance Solution}
+During the production sensors can pick up vibrations and unusual movement patterns in machines. This data can be sent to an IoT gateway for aggregation and processing. This enables factories to monitor and predict when a machine, pump, etc. needs maintenance.\\
+An easy example of predictive maintenance are light bulbs in an office building or in a smart home setup. 
+Turning of lights
+office buildings
+
+\comment{
+Since edge devices can also produce terabytes of data, taking the analytics closer to the source of the data on the edge can be more cost-effective by analyzing data near the source and only sending small batches of condensed information back to the centralized systems.
+}

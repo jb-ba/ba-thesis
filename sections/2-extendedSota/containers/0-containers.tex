@@ -1,4 +1,4 @@
-\subsection{Containers} \label{containers}
+\subsubsection{Containers} \label{sec:containers}
 Containers first surfaced in 2007 with the release of Linux Containers (LXC). They provide an abstraction and isolation layer to the software they are supposed to run. Basically, a container is packaged software that runs independent from the underlying system. They are created at runtime from container images, which are packaged, standalone executable software including everything the main application needs to run (code, runtime, system tools, libraries and settings)\cite{containerDefinition:online}. Thus, containers offer
 "unprecedented agility in developing and running applications in cloud environment especially when combined with a microservice-style architecture."\cite{microserviceContainers} Since 2007, there has been considered development of containers, especially by Docker, a company developing the same named application which is often used synonymously for containers. Docker donated its main container runtime environment, called containerd, to the CNCF open source community and later, in late 2017, announced the first major release of containerd. https://blog.docker.com/2017/12/cncf-containerd-1-0-ga-announcement/ This was significant, as the docker software was already widely used and it marked the start of an independent open source standard for containers.\\
 Today, containers are the building blogs of the cloud and power almost all distributed applications. Craig McLuckie, the lead product manager cloud computing product at Google, said in a panel discussion during the Linux collaboration summit in Febraury 2015:
@@ -7,17 +7,17 @@ Today, containers are the building blogs of the cloud and power almost all distr
 \textit{This containers revolution is changing the basic act of software consumption. It’s redefining this much more lightweight, portable unit, or atom, that is much easier to manage... It’s a gateway to dynamic management and dynamic systems.}
 \textit{\textbf{\large{''}}}
 \end{displayquote}
-It is important to note, that while the cloud saw the first transformation from containers the edge is part of the same dynamic system and stands to profit from adapting to containers. They offer many advantages over conventional deployments but have their drawbacks. For the edge resource consumption, hardware access and security are especially important and more closely analysed.\footnote{To keep the thesis concise I will not explain how containers work in greater detail only when required for the understanding of the content. For more information see Docker's website  \url{https://www.docker.com/resources/what-container} and containerd \url{https://containerd.io/}}.
+It is important to note, that while the cloud saw the first transformation from containers the edge is part of the same dynamic system and stands to profit from adapting to containers. They offer many advantages over conventional deployments but have their drawbacks. For the edge resource consumption, hardware access and security are especially important and more closely analysed.\footnote{To keep the thesis concise I will not explain how containers work in greater detail only when required for the understanding of the content. For more information see Docker's website  \url{https://www.docker.com/resources/what-container} and containerd \url{https://containerd.io/}}.\\[0.5mm]
 
-\vspace{0.5mm} \ \\
+% \vspace{0.5mm} \ \\
 \textbf{\textit{Resource Consumption}}\\
 \input{sections/2-extendedSota/containers/resourceConsumption.tex}
 
-\vspace{0.5mm} \ \\
+% \vspace{0.5mm} \ \\
 \textbf{\textit{Hardware Access}}\\
 \input{sections/2-extendedSota/containers/hardwareAccess.tex}
 
-\vspace{0.5mm} \ \\
+% \vspace{0.5mm} \ \\
 \textbf{\textit{Security}}\\
 \input{sections/2-extendedSota/containers/security.tex}
 
@@ -30,4 +30,5 @@ https://www.iotforall.com/containers-on-the-edge/
 
 Containers and Cloud: From LXC to Docker to Kubernetes
 
+%  try use if vspace does not work \\[0.5mm]
 }
