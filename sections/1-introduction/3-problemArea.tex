@@ -5,22 +5,74 @@ Why are IoT Gateways so hard to get right? Why is the edge so hard to get right?
  - Security
  - Stability
 }
+% Main text
+{
+Mobile devices profoundly changed the way computers interact with each other. When these devices became a commodity in the 90s\footnote{Back then smartphones were called personal digital assistant (PDA).}, the way we manage computing power needed to change to accommodate intensive tasks on light weight computers. Researchers started to experiment with local, remote (cloud) and mixed execution also called adaptive cloud offload. The researchers found huge gains from adaptive cloud offloading with a high enough bandwidth and concluded "the convergence of mobile computing and cloud computing enables new multimedia applications that are both resource-intensive and interaction-intensive."\cite{noble1997agileIoTGatewayOdyssey}. As one of the researches later put it "while mobile elements will undoubtedly improve in absolute ability, they will always be at a relative disadvantage."\cite{satyanarayanan2015briefHistoryIoTGateway}\\
+Today, we not only have smartphones, which have gotten quite powerful, but tiny IoT devices which are often build to last months on a single battery and have very, very limited processing power. New architectural patterns and communication technologies emerged to support these ultra low power and processing requirements. This lead to a fractured landscape where many manufacturers developed their own technology, mostly as closed source. There were some open source efforts but none taking over the entire industry. It was not felt necessary to have a centralized control plane, where updates could be scheduled and the system monitored. Applications did not have any isolation from the host operating system and often times security updates were not even deemed necessary, which left many IoT gateways and devices vulnerable to attacks leading to serious attacks like the Mirai botnet\cite{7971869MiraiAndOtherBotnetLinux}. Its important to note, that most attacks target Linux devices and not microcontrollers running on real time operating systems (RTOS).\\
+In 2009, the National Science Foundation rejected a paper because \textit{``Many panelists do not agree with the premise of the proposal in which distant cloud computing incurs too high latency to be acceptable by mobile applications. They question the validity of such assumption as the proposal provides no real data to justify it[...]''}\cite{satyanarayanan2015briefHistoryIoTGateway}. Much has changed since then. The smartphone revolution greatly increased the data produced by mobile devices and the need for speed, security and privacy. Researches did not foresee the explosion in IoT and the onset of a new wave of data producers bundled under the term Indutrial IoT (IIoT). It includes hundreds and thousands of IoT devices working together in factories, logistic warehouses, connected vehicles (CV), smart grid etc. In 2012 a widely cited paper "Fog Computing and Its Role in the Internet of Things"\cite{fogComputing:def} was published, establishing the need for IoT gateways connected to the cloud. It concluded that the amount and high frequency of produced data is too much for the cloud and pre-processing on the edge is needed for both latency and efficiency.\\
+However, establishing the need for edge computing is not the same as solving it. Since then many papers have been published with titles such as "The Internet of Things Has a Gateway Problem"\cite{zachariah2015internetOfThingsHasGatewayProblem}. At the same time, researchers used custom IoT gateway solutions and achieved impressive results. In one experiment, they achieved over 80\% performance increase in certain scenarios rightly titling their paper "From Cloud Computing to Fog Computing: Unleash the Power of Edge and End Devices"\cite{hong2017fromCloudtoIoTGatewayUnleashingTHePower}.\\
+}
 
-The space between the cloud and IoT and mobile devices, can be confusing at times. Knowing the history of IoT and the cloud is vital to understand the current developments. This, the methodology and the delimitation of this thesis will be discussed in the reminder of this section.\\
-The terms used in the academic world and the industry are often different and many concepts partially overlap and complement each other making it hard to clearly categorize solutions. This is mainly due to ever evolving hard- and software, changing the possibilities of the devices and the entire landscape. It is thus imperative to clearly outline the key terms and design philosophies used of this thesis as well as presenting already existing solutions and how they compare to each other. These aspects are part of \cref{sec:eSOTA}, \nameref{sec:eSOTA}.\\
-\Cref{sec:analysis}, \nameref{sec:analysis}, will lay the foundation to the actual implementation. We will motivate our design choices with academic and industry literature as well as with interviews from industry leaders. The focus of this thesis will be on the software and the requirements of the software to define and use the edge. Ultimately, it does not matter whether increases in performance and security come from better hardware or software, as long as the requirements are met. Consequently, the requirements will be ordered via the MoSCoW method. I will analyze the existing protocols, mainly for the application layer, and the data serialization method. Kubernetes is at the heart of this thesis implementation and extra sections will discuss what tricks Kubernetes already offers to control an edge cluster from the cloud and what might be missing. Additionally, I will look at extensions Kubernetes offers and how they could be useful in an IoT environemnt.\\
-Consequently, in \Cref{sec:implementation} we will show the actual implementation and the results from it.\\
-The research question of this thesis is thus:
+\subsubsection{Expected Outcome}
+This thesis will implement a fog system with Kubernetes at its core. It will explain how Kubernetes can aid in many challenges facing the edge and give insights into Kubernetes resources important for the edge, including containers, and the best practices. Such a system could become the industry norm influencing millions of deployments in many diverse industries. It would improve communication and observability and finally put a halt to most malicious attacks by reducing the attack surface to a bare minimum.\\
+
+\subsubsection{Research Question}
+In essence, the research question for this thesis is:
 \begin{displayquote}\begin{center}
-{\textit{\textbf{How to fully integrate Kubernetes in the edge and what technology is needed to achieve this?}}}
+{\textit{\textbf{How can Kubernetes facilitate edge computing, what challenges does it solve and where are its shortcomings?}}}
 \end{center}\end{displayquote}
 
+\subsubsection{Delimitation} \label{sec:delimitation}
+\comment{
+Exclude non Kubernetes related technologies.\\
+Exclude mobile devices.\\ All a lot of technologies are still relevant but not discussed. In future work mention it
+Exclude hardware.\\
+Exclude Sort of 5g and advances in mobile technologies.\\ Rich field
+Exlude infrastructure edge.\\
+Exclude RTOS.\\
+}
 
 
 
 
 
 
+
+
+\comment{
+
+
+Edge computing started as a way to give mobile devices more power.
+Technopedia defines a mobile device as a "handheld tablet or other device that is made for portability, and is therefore both compact and lightweight"\cite{WhatisaM95TechnopediaMobileDevice:online}, it includes laptops, smartphones, tables etc.  As Mahadev Satyanarayanan put it "while mobile elements will undoubtedly improve in absolute ability, they will always be at a relative disadvantage."\cite{satyanarayanan2015briefHistoryIoTGateway} Back then, researchers experimented with local, remote (cloud) and mixed execution also called adaptive
+cloud offload. Assessing the three variants for voice recognition, video playback and web browsing locally, the researchers found huge gains from adaptive cloud offloading with a high enough bandwidth and concluded "the convergence of mobile computing and cloud computing enables new multimedia applications that are both resource-intensive and interaction-intensive."\cite{noble1997agileIoTGatewayOdyssey}. This lead to an explosion in cloud development. The Internet started out with a decentralized servers around the world. But over the years technologies were invented for orchestration across these distant servers, but also isolation for the local deployments. Probably the two main technological standards evolving where containers with containerd and orchestration with Kubernetes. \\
+Traditionally, mobile devices connected to a gateway, which was mainly a router operating at L3\footnote{L3 stands for Layer 3, the networking layer in the OSI model.} to route packets and translate between different types of network protocols. \cite{lee2017futureOfIoT}. However, according to Dejan Bosanac, a senior software engineer at Red Hat in the field of cloud messaging and IoT platforms, due to their proximity to the sensors and the end user, these devices have three main advantages over the cloud: 
+\begin{displayquote}
+{\textbf{``Low latency, availability and locality''}}\cite{IntroducingDejanBosanac:KubernetesIoTEdgeWorkingGroup} - Dejan Bosanac.
+\end{displayquote}
+Because of these advantage researchers construct hybrid systems, in which devices operating on the edge of the network play an active role in the data processing pipeline. This architectural style of carrying out substantial amount of computation and storage at the edge is called "edge computing" \cite{fogComputing:def}. \Cref{fig:iotDeviceSetup} shows where the gateway is positioned in the current communication setup. 
+ \begin{figure}[!h]
+     \centering
+     \includegraphics[scale=2]{figures/iotSetup.png}
+     \caption{The position of the gateway in the current Internet infrastructure\cite{iotGatewaySlavesGraph}.}
+     \label{fig:iotDeviceSetup}
+ \end{figure}\\
+But not everyone in the academic world was convinced that edge computing was indeed the way forward. 
+However, establishing the need for edge computing is not the same as solving all problems though, and since then many papers have been published with titles such as "The Internet of Things Has a Gateway Problem"\cite{zachariah2015internetOfThingsHasGatewayProblem}. At the same time, researchers used custom IoT gateway solutions in their research and achieved impressive results. In one experiment, they achieved over 80\% performance increase in certain scenarios rightly titling their paper "From Cloud Computing to Fog Computing: Unleash the Power of Edge and End Devices"\cite{hong2017fromCloudtoIoTGatewayUnleashingTHePower}. Adding further to the problem of standardization is that IoT, especially IIoT, and mobile device have very different requirements.\\
+This is the current place of the industry. There is a common agreement that fog computing is essential in the future, but no standard and open solution was developed yet. There is considerable effort in the academic world and in the industry to establish such a standard, one such initiatives is the Kubernetes IoT Edge working group under the Cloud Native Computing Foundry (CNCF). 
+
+
+
+
+The space between the cloud and IoT and mobile devices, can be confusing at times. Knowing the history of IoT and the cloud is vital to understand the current developments. This, the methodology and the delimitation of this thesis will be discussed in the reminder of this section.\\
+
+
+
+
+The terms used in the academic world and the industry are often different and many concepts partially overlap and complement each other making it hard to clearly categorize solutions. This is mainly due to ever evolving hard- and software, changing the possibilities of the devices and the entire landscape. It is thus imperative to clearly outline the key terms and design philosophies used of this thesis as well as presenting already existing solutions and how they compare to each other. These aspects are part of \cref{sec:eSOTA}, \nameref{sec:eSOTA}.\\
+\Cref{sec:analysis}, \nameref{sec:analysis}, will lay the foundation to the actual implementation. We will motivate our design choices with academic and industry literature as well as with interviews from industry leaders. The focus of this thesis will be on the software and the requirements of the software to define and use the edge. Ultimately, it does not matter whether increases in performance and security come from better hardware or software, as long as the requirements are met. Consequently, the requirements will be ordered via the MoSCoW method. I will analyze the existing protocols, mainly for the application layer, and the data serialization method. Kubernetes is at the heart of this thesis implementation and extra sections will discuss what tricks Kubernetes already offers to control an edge cluster from the cloud and what might be missing. Additionally, I will look at extensions Kubernetes offers and how they could be useful in an IoT environemnt.\\
+
+
+}
 
 \comment{
 The main focus is going to be on the software driving fog computing with an emphasize on IoT device and less mobile devices. 
