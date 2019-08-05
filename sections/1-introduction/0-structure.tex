@@ -6,10 +6,16 @@
 \\[1pt]
 \raggedleft{{\rm --- Gartner}}
 \end{displayquote}
+Data has never been as ubiquitous as it is today. Not only do our mobile phones constantly generate data but also the things we wear, use and own are now generating data. Not only the private sector is effected by this data revolution also the industry is embracing new technologies to gather data to automate processes. Some factories are even operated entirely self-sufficient without any human intervention. These factories are called "lights-out factories" and are becoming more and more popular\cite{wheresmyRobotLightsOut33:online}. In a world where data is everywhere the computing power to process this data has to be everywhere as well. Relying solemnly on centralized servers will eventually topple the system. The estimate by Gartner that 75\% of data will be generated and processed outside traditional data centers clearly shows decentralized architectures are here to stay.\\
+In a curated report from the economist in 2015 the authors conclude that "cloud computing has the potential to disrupt entire industries, reshape businesses and markets and change the way we think about information"\cite{PuttogetEconomistCloud13:online}. Much of this success can be attributed to Kubernetes. It is a platform for container orchestration and was donated by Google to the open source community in 2014\cite{WhatisKubernetes87:online}. It enables the abstraction of hardware from deployments and provides much of the simplicity of Platform as a Service (Paas).\\
+Edge computing is the term used for processing and storing data on the edge of the network. Fog computing is a subform of edge computing where the edge part is tightly integrated with the cloud to enhance both systems. This brings new possibilities and challenges to system designers.\\
+In this thesis I will also construct an exemplary fog setup to remotely monitor and control lights to see the areas Kubernetes excels in but also it shortcomings. Finally, I will argue that Kubernetes should be the default platform for both cloud and edge computing to provide a homogeneous system for easy development, management and monitoring. Kubernetes is not fully optimized for this task yet, but the sooner it is the better for the entire industry.
 
-\input{sections/1-introduction/1-introduction.tex}
+
+
+% \input{sections/1-introduction/1-introduction.tex}
 \input{sections/1-introduction/2-motivation.tex}
 \input{sections/1-introduction/3-problemArea.tex}
 % \input{sections/1-introduction/4-shortHistory.tex}
-% \input{sections/1-introduction/5-methodology.tex}
+\input{sections/1-introduction/methodology.tex}
 % \input{sections/1-introduction/6-delimitation.tex}
