@@ -1,21 +1,34 @@
 \subsection{System Implementation}
-The implemented system for this thesis is kept simple with one device on each computation layer. The esp32 connected to a button and light is the IoT device makes up the IoT layer, the RPi the edge layer and the VPS the cloud part. This is shown in \cref{fig:actualSetup}.
+The implemented system is kept simple by using only one device at each network layer to reduce the overall system complexity. The architecture is shown in \cref{fig:actualSetup}. The IoT device, a esp32, is connected to a button and a light, the RPi makes up the edge layer and the VPS the cloud layer.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{figures/actualSetup.png}
     \caption{The implemented system.}
     \label{fig:actualSetup}
 \end{figure}
-On the edge we have little latency 
+On the edge, all devices are directly connected either through wire or WiFi and are only dependent on each other to provide the normal functions. The expected round trip time (RTT) for a given signal should be rather low translating into an immediate response. In more extensive examples, the RPI could first check if pressing the button is even permissible and only then turn on the light/machine etc. In \cref{fig:actualSetup} the solid arrows stand for communication instantiated by the system and the dashed arrows communication instantiated by external changes. The systems internal communication always goes up, from the IoT devices to the cloud, whereas system external communication goes the other way around. It is also expected that the system internal communication happens far more frequently than the system external one.
 
+\Cref{fig:actualImplementationSetup} uses the same layout as \cref{fig:implementationSetup} but shows the actual system implementation. Comparing it to the desired system under \cref{sec:desiredSystem} shows that major and minor changes following the classification of the requirements had to made as technology and time did not allow for a full implementation.
 
-
-\Cref{sec:desiredSystem} presented the ideal system with the resources provided for this thesis. Following the classification via the MoSCoW method major and minor changes to the ideal setup had to made as technology and time didn't not allow for a full implementation. \cref{fig:actualImplementationSetup} shows the actual implementation.
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{figures/actualImplementationSetup.png}
     \caption{The actual system architecture of the implementation.}
     \label{fig:actualImplementationSetup}
 \end{figure}
-The cloud part is unchanged from the desired setup, on the edge part however adoptions had to be made. The Istio envoy proxy does not compile for the ARM architecture yet, so the traffic will not be encrypted. It is true that encryption could still be made, but that would create the difficulties of handling certificates into the administrators hands. It also makes it impossible to reroute network traffic from the application to another destination. Istio enables a whole set of traffic management, which is not available if its proxy is not able to run inside the pod.\\
-The connection from the 
+
+The cloud part is unchanged from the desired setup. The edge part had to be adopted due to technical issues. The Istio envoy proxy does not compile for the ARM architecture yet. Istio provides traffic shaping and routing, default mutual TLS encryption between services, an extensive ingress gateway and more. Kubernetes is already capable of some of these things but Istio is a far more potent tool. It makes it impossible to reroute network traffic from the application to another destination and importantly the traffic between the edge and the cloud will not be encrypted. The envoy team is working on a patch for ARM devices but until then another solution has to be found. Using human produced certificates is not a good idea, especially for small project as the certificates have to be kept up to date, should be rotated and mutual TLS is hard to implement.
+
+Similarly, the CoAP librarby for esp32 does not support DTLS yet. The developers are aware of it and are working on fixing it. Protobufs are base 128 encode message which provides a shielding against to most rudimentary attacks, but it is not a security mechanism to rely on. Finally, due to time issues and prioritization the update service for the IoT device was not been completed.
+
+Apart from the automatic updates for the edge device, the networking and encryption issues, all requirements labeled as SHOULD or MUST have been successfully implemented. This means by pressing a button a user can turn on or off a light. In the background, this data is send from the esp32 to the RPI, which processes the data and sends a usage statistic of the light in defined time intervals to the server for further processing and storage. The system can also change the state of the light automatically from a centralized input field. Further, the administrator can update the specifications for all cluster internal resources (edge or cloud) and the system works towards implementing this specifications. It also means, in case of failure, e.g. an application crash on the edge, the system can reschedule this application. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{figures/dashboardK8s.png}
+    \caption{The Kubernetes Dashboard showing the Edge Application.}
+    \label{fig:dashboarK8s}
+\end{figure}
+
+\Cref{fig:dashboarK8s} shows the Kubernetes dashboard of the running application. It shows that the deployments, pods and replica sets are all working as they should. More services for the same namespace would show up here as well. To see the status of the resources in other namespaces it is enough to change to that namespace, provided the permissions are granted. This is the beauty of Kubernetes, it not only helps deploying applications but also provides extensive data about their status and always tries to restore a working state.
+

@@ -13,21 +13,25 @@
 \input{cmds/sectionHeaders.tex}
 \input{cmds/titlePage.tex}
 
+\setlength{\parindent}{8mm}
+
 \begin{document}
-% \includepdf[pages=-]{PDF/page_0.pdf}
 % \maketitle
-\input{cmds/titlePageReal.tex}
 
+% \input{cmds/titlePageReal.tex}
 
-
+% \includepdf[pages=-]{PDF/page_0.pdf}
 
 \cfoot{\thepage}
 \pagenumbering{Roman}
 
 %\citetrackerfalse
 \clearpage
-\tableofcontents
-\listoffigures
+% \tableofcontents
+\clearpage
+% \listoffigures
+\clearpage
+% \listoftables
 \clearpage
 
 \pagenumbering{arabic}
@@ -37,6 +41,7 @@
 \input{sections/2-extendedSota/0-structure.tex}
 \input{sections/3-analysis/0-structure.tex}
 \input{sections/4-implementation/0-structure.tex}
+\input{sections/5-ConclusionNFuture/conclustion.tex}
 \clearpage
 
 \printbibliography[heading=bibintoc]

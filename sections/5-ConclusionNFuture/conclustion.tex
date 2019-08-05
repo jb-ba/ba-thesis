@@ -1,0 +1,27 @@
+\clearpage
+\section{Conclusion and Future Outlook}
+As a system administator it is hard to describe what it means to have a system that works for you. Telling a system to change a port on a running application is not as easy as it seems. The application needs to be stopped correctly, and restarted using a different port. In the case of failure the systems must actively try to recover from the failure and notifies the administrator that something is wrong. Kubernetes can do all of this and more.
+
+But Kubernetes is not without its flaws. As Kelsey Hightower, a Kubernetes developer advocate at Google, said during KubeCon 2017 ``If you’re new to Kubernetes, it will set you free. But first it will piss you off''\cite{KubernetesPissYouOff:online}. From the learnings of this implementation, this is more than true. Understanding Kubernetes, let alone containers, can be challenging. Implementing best practices, like scratch containers, using the image digest and Helm for resource deployments can be daunting tasks. But once, the barrier of understanding and using Kubernetes and its tools is reached, Kubernetes opens up a new world for developers on how to manage resources and their applications.
+
+Updating the application code for the implementation to add new features and security on remote devices like the RPi or any other node connected to the cluster is as easy as pressing a button. Additionally, rules can be defined to tightly control the system of how much resources components can use, who has access to what and networking can be controlled independent of the application. \\[5mm]
+
+{\hspace*{5mm}{\textbf{\textit{Future Outlook}}}}
+
+A few issues have to be worked out before Kubernetes should be used for production services on the edge. Istio needs better support for ARM. It is a crucial tool for fog computing as it allows automatic encryption between the nodes inside a cluster. A Kubernetes wide standard has to be implemented to deal with connection losses, retrials and longer timeouts to enable edge devices to function without a stable connection. One such solution is multi-cluster, but this feature is still in alpha. 
+
+The IoT community needs to come together and try to reduce the number of IoT protocols so that specific protocols can be tightly integrated into Kubernetes. The official Kubernetes installation needs a new flag for less powerful devices, e.g. \textit{--edge=true}, which would automatically set the kubectl into powersave mode (e.g. reduce the housekeeping rate and more). 
+
+The Kubernetes IoT Edge working group\cite{IntroducingDejanBosanac:KubernetesIoTEdgeWorkingGroup} is a step in the right direction to funnel the industry effort and explore the possibilities of Kubernetes for the edge. Solutions which are tightly integrated into Kubernetes but do not run Kubernetes itself are going to have a hard time. Developers are going to expect the same experience and tools from their edge devices as from the cloud. I expect Kubernetes to take over the other projects and become the de-facto standard for edge and fog orchestration. 
+
+This thesis led to code commits to the Istio as well as to the Kubeedge project. I would like to continue the work on envoy proxy and expand on the services implemented in this thesis. Additionally, I would like to explore first hand the possibilities of multi-cluster and multi-cloud architectures. It will be interesting to see how fast edge developers will embrace Kubernetes and create new tools for edge first and cloud second.
+I will end this thesis with a quote from the CEO of the Eclipse Foundation summarizing the state of Kubernetes on the edge:
+\begin{displayquote}
+\textit{\textbf{\Huge{``}}}
+\textit{\large{
+This is just getting started and this is a process — and not an event.\cite{ioFogMainBlog:online}
+}}
+\textit{\textbf{\Huge{''}}}
+\\[1pt]
+\raggedleft{{\rm --- Mike Milinkovich, CEO of Eclipse Foundation}}
+\end{displayquote}
