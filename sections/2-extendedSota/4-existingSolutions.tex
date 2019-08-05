@@ -1,6 +1,6 @@
 \subsection{Existing Solutions} \label{sec:existingSolutions}
 
-Traditionally, edge devices were isolated cluster heads mainly forwarding traffic from their slaves to the cloud. Today, they are an integral part of the data flow pre-processing data and executing part of the business logic. But, there are still no coherent architectural as well as technological standards. In this section we will compare widely adopted and developed solutions in the industry to detect similarities and differences. The solutions also differ in age and 
+Traditionally, IoT gateways were isolated and mainly forwarding traffic from their slaves to the cloud. Today, they can be integral part of the data processing pipeline executing part of the business logic close to where it happens. But, there are still no coherent architectural as well as technological standards. In this section we will compare widely adopted and developed solutions in the industry to detect similarities and differences. The solutions differ in age, industry wide adoption and technologies.
 
 % https://scholar.google.com/scholar?cluster=13680069378267225814&hl=de&as_sdt=0,5
 % https://www.pac-online.com/sites/pac-online.com/files/upload_path/PDFs/Thema_des_Monats_Juni_2017_IoT_Plattformen.pdf
@@ -8,7 +8,7 @@ Traditionally, edge devices were isolated cluster heads mainly forwarding traffi
 
 \subsubsection{Bosch IoT Gateway Solutions}
 \comment{https://www.bosch-iot-suite.com/service/gateway-software/}
-The Bosch IoT Gateway Software\cite{BoschIoT13:online} is the "oldest" software analyzed. It is based on the OSGi technology\cite{osgiDefintion25:online}, which is an aliance driven project from the Open Services Gateway initiative (OSGi). It defines a set of specifications (with reference implemetation and tests) for a dynamic modular system based on so called bundles, third party software, running on the Java Virtual Machine (JVM)\footnote{This means it is possible to use other languages apart from Java which can run in a JVM, e.g. Kotlin.}. It is important to note that Bosch also supplies a cloud part which is based on Kubernetes.\\
+The Bosch IoT Gateway Software\cite{BoschIoT13:online} is the "oldest" software analyzed. It is based on the OSGi technology\cite{osgiDefintion25:online}, an alliance driven project from the Open Services Gateway initiative (OSGi). It defines a set of specifications (with reference implemetation and tests) for a dynamic modular system based on so called bundles, third party software, running on the Java Virtual Machine (JVM)\footnote{This means it is possible to use other languages apart from Java which can run in a JVM, e.g. Kotlin.}. It is important to note that Bosch also supplies a cloud part which is based on Kubernetes.\\
 The OSGi framework consists of a layered model shown in \cref{fig:osgiLayerModel}. 
 \begin{figure}[h!]
     \centering
