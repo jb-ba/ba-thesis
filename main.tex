@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+    \documentclass[a4paper]{article}
 \renewcommand{\baselinestretch}{1.5} 
 \input{cmds/packages.tex}
 
@@ -21,10 +21,14 @@
 \input{cmds/titlePageReal.tex}
 % \maketitle
 \clearpage
+\includepdf[pages=-]{aau/baAbstractAAU.pdf}
+% \input{cmds/colophon.tex}
+% \clearpage
+\clearpage
 \input{cmds/acknowledgment.tex}
 \clearpage
 
-% \includepdf[pages=-]{PDF/page_0.pdf}
+
 \cfoot{\thepage}
 \pagenumbering{Roman}
 
@@ -41,13 +45,14 @@
 
 \clearpage
 \restoregeometry
-\pagestyle{fancy}
 \listoffigures
 \clearpage
 \listoftables
 \vspace{5cm}
 \lstlistoflistings
 \clearpage
+
+\pagestyle{fancy}
 
 
 \clearpage
