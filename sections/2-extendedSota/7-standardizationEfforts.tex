@@ -8,7 +8,7 @@ Compared to other IoT protocols CoAP is easier to understand as it uses the same
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.45]{figures/mqtt-vs-coap.jpg}
-    \caption{MQTT and CoAP architecture side by side\cite{COAPvsMQTT27:online}.}
+    \caption{MQTT and CoAP Architecture side by side\cite{COAPvsMQTT27:online}.}
     \label{fig:mqttVsCoap}
 \end{figure}
 MQTT is based on the publish-subscribe massaging pattern which relies on a central entity, called broker, to enable communication between multiple nodes. Researches compared the two standards and found "MQTT messages experienced lower delays than CoAP for lower packet loss and higher delays than CoAP for higher packet loss"\cite{MQTTvsCoAPAnalysisIEEE}. They also found that the message overhead for small messages is significantly lower at 25\% or less for CoAP compared to MQTT for reliable message transmission. But MQTT is by default synchronized across the cluster while CoAP is not. To combat this the standard was extended by the "observable" method in 2015\cite{RFC7641observableCoAP}. This makes it possible for a client to subscribe to a server resource and keep it updated by the server. and is very close to the publish-subscribe massaging pattern from MQTT.\\[5mm]
@@ -17,8 +17,8 @@ Protocol Buffers (Protobuf) are not yet standardized and only have an expired pr
 When researches compared the message sizes of JSON to protobufs they found huge differences between the two, shown in \cref{fig:jsonVsProtobufs}.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.45]{figures/jsonVsProtobufs.png}
-    \caption{Memory consumption of different serialization methods\cite{}.}
+    \includegraphics[scale=0.6]{figures/jsonVsProtobufs.png}
+    \caption{Memory Consumption of different Serialization Protocols\cite{jsonVsProtobufs}.}
     \label{fig:jsonVsProtobufs}
 \end{figure}
 The researches conclude "the Protocol Buffers are a serious candidate for standardized way of communication in field of Internet of Things"\cite{jsonVsProtobufs}.\\[5mm]

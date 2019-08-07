@@ -6,6 +6,8 @@
 \addbibresource{bibl.bib}
 \include{bibl.bib}
 
+\newcommand{\mycaption}[2][]{\caption[#1]{#1 #2}} % To use caption without line breaks
+
 \graphicspath{{pictures/}}
 
 \input{cmds/lstlistingSkipLines.tex}
@@ -16,24 +18,39 @@
 \setlength{\parindent}{8mm}
 
 \begin{document}
+\input{cmds/titlePageReal.tex}
 % \maketitle
-
-% \input{cmds/titlePageReal.tex}
+\clearpage
+\input{cmds/acknowledgment.tex}
+\clearpage
 
 % \includepdf[pages=-]{PDF/page_0.pdf}
-
 \cfoot{\thepage}
 \pagenumbering{Roman}
 
+
 %\citetrackerfalse
+% \clearpage
+% \pagestyle{empty}
+% \begin{minipage}{\textwidth-1mm}
+\newgeometry{top=2cm, bottom=3.6cm}
+\tableofcontents
+
+
+% \end{minipage}
+
 \clearpage
-% \tableofcontents
+\restoregeometry
+\pagestyle{fancy}
+\listoffigures
 \clearpage
-% \listoffigures
-\clearpage
-% \listoftables
+\listoftables
+\vspace{5cm}
+\lstlistoflistings
 \clearpage
 
+
+\clearpage
 \pagenumbering{arabic}
 % \input{structure.tex}
 % \input{sections/glossary.tex}

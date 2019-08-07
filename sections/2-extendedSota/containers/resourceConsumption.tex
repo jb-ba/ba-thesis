@@ -3,9 +3,7 @@ Processing power consumption from containers is always greater than bare metal d
 
 Additionally, containers allow and encourage multi-stage builds. This method of building containers allows to have one container to build the application and another one to run the application. The one used for building contains all dependencies and the compile environment, while the one used for running the application only contains the binary and run-time relevant files (e.g. certificates or the linux user). This eliminates any unused files and is often used in combination with the \textit{scratch} image. 
 
-It is the base image for all other images and is basically an empty file structure consuming no disk space or memory\footnote{It also creates an isolated network and process namespace, but they are also very cheap.}. According to Docker the scratch image ``is most useful in the context of building [...] super minimal images''\cite{scratchImageDockerD65:online}. Another advantage using smaller images is the faster extracting time. Images are usually stored as archives and extracted on the host machine placing an additional strain on the system for each new deployment. \\[0.5mm]
-
-
+It is the base image for all other images and is basically an empty file structure consuming no disk space or memory\footnote{It also creates an isolated network and process namespace, but they are also very cheap.}. According to Docker the scratch image ``is most useful in the context of building [...] super minimal images''\cite{scratchImageDockerD65:online}. Another advantage using smaller images is the faster extracting time. Images are usually stored as archives and extracted on the host machine placing an additional strain on the system for each new deployment.\\[0.5mm]
 \comment{
 Combining these these techniques can result in far lower memory and RAM consumption, but also better security (discussed in the next section). In the implementation, \cref{sec:testService} \nameref{sec:testService}, I will show just how much memory can be saved using these techniques. 
 
@@ -14,4 +12,3 @@ Combining these these techniques can result in far lower memory and RAM consumpt
 
 In an updated performance assessments of containers the authors found that containers introduce almost no overhead over a native deployment\cite{felter2015updatedPerformanceContainers}. Hence, gateways running Linux can in most cases use containers without a problem. 
 }
-

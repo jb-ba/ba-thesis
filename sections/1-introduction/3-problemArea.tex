@@ -22,7 +22,7 @@ his left many IoT gateways and devices vulnerable to attacks. The Mirai botnet\c
 }
 
 \subsubsection{Expected Outcome}
-This thesis will implement a fog system with Kubernetes at its core. It will explain how Kubernetes can aid in many challenges facing the edge and gives insights into important Kubernetes resources for the edge, including containers, and the best practices for using these resources. The developed system could become the industry norm influencing millions of deployments in many diverse industries. It would improve communication, observability and finally put a halt to most malicious attacks by greatly reducing the attack surface.\\
+This thesis will implement a fog system with Kubernetes at its core. It will explain how Kubernetes can aid in many challenges facing the edge and gives insights into important Kubernetes resources for the edge, including containers, and the best practices for using these resources. The developed system could become the industry norm influencing millions of deployments in many diverse industries. It would improve communication, observability and finally put a halt to most malicious attacks by greatly reducing the attack surface.
 
 \subsubsection{Research Question}
 In essence, the research question for this thesis is:
@@ -40,9 +40,6 @@ Exlude infrastructure edge.\\
 Exclude RTOS.\\
 }
 This thesis is centered around Kubernetes and provides an exemplary implementation for edge/fog computing. Because Kubernetes and edge computing are both extensive topics this thesis will not discuss the following aspects in more detail:\\[5mm]
-
-
-
 \textbf{\textit{Other Orchestration Technologies}}\\
 Kubernetes is not the only container orchestration tool on the market, but its design and industry support has made the de-facto standard. Other tools like Apache Mesos\cite{ApacheMesos19:online} and Docker Swarm\cite{DockerSwarmmod12:online} are less adoptable than Kubernetes and are less used. Rancher recently dropped support for both platforms in their new version saying that "out of more than 15,000 clusters, only about 200 or so are running Swarm"\cite{FAQ36RancherSwarmMesos:online}. I will follow this approach and only consider Kubernetes as orchestration platform.\\[5mm]
 \textbf{\textit{Mobile Devices}}\\
@@ -56,10 +53,9 @@ Real-time operating system (RTOS) can guarantee a certain time of execution and 
 \textbf{\textit{Cloud Computing Models}}\\
 How the hard and software is provided to the customers and its effects are also outside of this thesis scope. The concepts are only shortly explained here but will be not considered thereafter. A customer can purchase online computing space and run Kubernetes herself. This is called Infrastructure as a Service (IaaS). It is also possible to get a managed version of Kubernetes so called Platform as a Service (PaaS). Finally, Software as a Service (SaaS) is were the customer only pays for the final software, deployment and development outsourced.\\[5mm]
 \textbf{\textit{Operatins Systems designed for Kubernetes}}\\
-More and more operating systems are being released for the sole purpose of deploying containers and some are even targeted towards only running Kubernetes. This makes a lot of sense, as many vulnerabilities come from extra features not used in the container world. But it does not effect Kubernetes itself or the conclusions drawn in this thesis. I will be using a debian fork custom made for the RPi, Raspbian, and Ubuntu 18.04 in the cloud. So no judgment can be made upon other operating systems.
-
-
-
+More and more operating systems are being released for the sole purpose of deploying containers and some are even targeted towards only running Kubernetes. This makes a lot of sense, as many vulnerabilities come from extra features not used in the container world. But it does not effect Kubernetes itself or the conclusions drawn in this thesis. I will be using a debian fork custom made for the RPi, Raspbian, and Ubuntu 18.04 in the cloud. So no judgment can be made upon other operating systems.\\[5mm]
+\textbf{\textit{Continuous Delivery and Continuous Deployment}}\\
+Continuous Delivery and Continuous Deployment, sometimes Delivery, (CI/CD) is a method to guarantee constantly updated and working software. CI is the continuous integration of source code, thus avoiding long running development branches. CD is the continuous deployment of applications based on the newest stable source code. Using a CI/CD pipeline with Kubernetes automates most Kubernetes tasks and is normally used in the industry. But it is not the focus point of the thesis.
 
 
 

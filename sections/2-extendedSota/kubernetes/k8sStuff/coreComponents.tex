@@ -3,7 +3,7 @@ Kubernetes is complex and resource intensive tool. However, much of the resource
 \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.6]{figures/rancherK8sComponents.png}
-    \caption{The Kubernetes architecture and node components\cite{nodeSetupKubernetes:online}}
+    \caption{The Kubernetes Architecture and Node Components\cite{nodeSetupKubernetes:online}}
     \label{fig:nodeComponents}
 \end{figure}
 The kubelet is the primary node agent and schedules and maintains containers running inside a pod based on the pods \textit{PodSpecs}. It gets the these specifications mainly from the APIServer, but other Kubernetes internal sources are possible, too. Containers created outside of the cluster (or multi cluster) are not managed by the kubelet. 

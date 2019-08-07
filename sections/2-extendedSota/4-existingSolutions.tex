@@ -10,10 +10,10 @@ Traditionally, IoT gateways were isolated devices, mainly forwarding traffic fro
 \comment{https://www.bosch-iot-suite.com/service/gateway-software/}
 The Bosch IoT Gateway Software\cite{BoschIoT13:online} is the oldest software analyzed. It is based on the OSGi technology\cite{osgiDefintion25:online}, an alliance driven project from the Open Services Gateway initiative (OSGi). It defines a set of specifications (with reference implemetation and tests) for a dynamic modular system based on so called bundles, third party software, running on the Java Virtual Machine (JVM)\footnote{This means it is possible to use other languages apart from Java which can run in a JVM, e.g. Kotlin.}. It is important to note that Bosch also supplies a cloud part which is based on Kubernetes.\\
 The OSGi framework consists of a layered model shown in \cref{fig:osgiLayerModel}. 
-\begin{figure}[h!]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.8]{figures/layering-osgi.png}
-    \caption{From the official OSGI documentation\cite{osgiFrameworkArchitec22:online}.}
+    \mycaption[The OSGi Layered Model.]{From the official OSGI documentation\cite{osgiFrameworkArchitec22:online}.}
     \label{fig:osgiLayerModel}
 \end{figure}
 The Service layer interconnects the bundles making it possible for them to communicate via plain old java objects (POJO).The Life-Cycle layer handles the state of an application (start, stop, update and uninstall). The Modules layer defines how an application can import and export code and the Execution Environemnt defines which methods and classes are available in a specific environemnt. Finally, the Security layer encompasses all other layers and handles for example code authentication, the digital signing of jar files, file access restrictions, certificates and more.\\
@@ -25,10 +25,10 @@ The software is stable at major version 9 and still under heavy development. It 
 ioFog is one of the older projects in this report, with the first official release in 2016\cite{ioFogMainBlog:online}. Similarly to the OSGi framework it provides a runtime environment for applications, mainly intended for microservices. In addition, it includes a message bus, dynamic configuration of the microservices, and remote debugging\cite{ioFogMainBlog:online}. It runs on all Linux distributions and only requires Docker to be installed. In their official system requirements they only recommed using a Raspberry Pi as a worker node and not to run the Controller and Connector infrastructure on it\cite{ioFOgQuickStart:online}.
 
 \Cref{fig:ioFogComponent} shows the fog computing layers in more detail.
-\begin{figure}[h!]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.4]{figures/ioFog-Component_Diagram.png}
-    \caption{ioFog detailed Cluster Architecture}
+    \includegraphics[scale=0.45]{figures/ioFog-Component_Diagram.png}
+    \mycaption[ioFog Cluster Architecture]{From the official Eclipse Youtube channel under \url{https://youtu.be/6_n-Yk8v27k}.}
     \label{fig:ioFogComponent}
 \end{figure}
 
@@ -41,10 +41,10 @@ In a recent blog post Mike Milinkovich, the Executive Director of the Eclipse Fo
 Docker is commonly known for its containerization software and is often confused with containers themselves (like Google for search). The core container runtime, containerd, was donated by Docker to the Cloud Native Computing Foundry (CNCF) in 2017\cite{containerDonationDocker79:online} which manages and develops it now. The company Docker focuses on providing an ecosystem around containers making them easy to deploy, secure and replicate. Recently, Docker announced a new partnerships with ARM together with a new platform and strategy for edge devices.
 
 \Cref{fig:dockerEdge} shows how Docker sees its solution fitting in the current landscape.
-\begin{figure}[h!]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.65]{figures/docker-edge-solution.jpg}
-    \caption{Docker Edge solution.}
+    \caption{The Docker Edge Solution}
     \label{fig:dockerEdge}
 \end{figure}
 
@@ -52,10 +52,10 @@ Docker is commonly known for its containerization software and is often confused
 The solution consists of different products from its enterprise solution focusing on security, scalability, deployability and easy of use. The edge focus is on fault tolerance and platform support, hence the new partnership with ARM. A core component of the suit is the docker registry, which can be mirrored/replicated on many difference nodes for scaleability and fault tolerance and shown in . It can function without constant communication with the rest of the cluster, called swarm in docker. As edge devices often have limited disk space, docker only synchronizes promoted images on these nodes. These are signed images that are explicitly marked as production ready.
 
 \cref{fig:dockerRegistryForIoT} shows registry management with mirrors inside a cluster.
-\begin{figure}[h!]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.7]{figures/docker-edge-computing-with-docker-enterprise.jpg}
-    \caption{The Docker registry mirroring.}
+    \includegraphics[width=\textwidth]{figures/docker-edge-computing-with-docker-enterprise.jpg}
+    \caption{The Docker Registry Mirroring}
     \label{fig:dockerRegistryForIoT}
 \end{figure}
 
@@ -83,10 +83,10 @@ Another important aspect of k3s is its purpose to run on single as well as multi
 Kubeedge is another project inside the Kubernetes IoT Edge working group and thus build with Kubernetes in mind. It is a relatively young project to extend native containerized application orchestration and device management to the Edge. It is based on two parts, the cloud and the edge. It is mainly developed by Huawei, which at the time of writing could be reason for future complications because of recent US sanctions against the company.
 
 The kubeedge system is shown in \cref{fig:kubeedgeStruct}.
-\begin{figure}[h!]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=(\textwidth+4cm)/2]{figures/kubeedge_arch.png}
-    \caption{The Kubeedge system design.}
+    \includegraphics[width=\textwidth-1cm]{figures/kubeedge_arch.png}
+    \mycaption[The Kubeedge System Design.]{From the official KubeEdge documentation\cite{kubeedgeDocumentation90:online}}
     \label{fig:kubeedgeStruct}
 \end{figure}
 
@@ -113,7 +113,7 @@ It is also important to note that all newer solutions, K3s and Kubeedge, are dev
 % Giving access to devices like  Blt sigbee is a security issue.
 
 \comment{
-\begin{figure}[h!]
+\begin{figure}[!ht]
     \centering
     \noindent\makebox[\textwidth]{
     \includegraphics[width=(\textwidth+4cm)/2]{figures/docker-edge-computing-with-docker-enterprise.jpg}
