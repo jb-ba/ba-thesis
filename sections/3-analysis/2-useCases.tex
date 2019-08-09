@@ -16,9 +16,9 @@ As the store changes its offerings and layout the gateways are used to deploy a 
 All applications and nodes have to be constantly working and one crash or malicious attack should not jeoperdize the entire system.
 
 \subsubsection{Use Case 2: Ticket Terminal}
-A cinema chain has a ticket terminals where the user can create an account and set his credit card details and other user data. The terminals are placed in each cinema and upload the user data to the cloud for centralized storage. Thus, a user in cinema A can also automatically check in in cinema B. The terminals also have a card reader for easier check in. Every year the card reader manufacturer produces an update for the devices. These updates are deployed on the terminals via the central configuration point.
+A cinema chain has a ticket terminal where the user can create an account and set his credit card details and other user data. The terminals are placed in each cinema and upload the user data to the cloud for centralized storage. Thus, a user in cinema A can also automatically check in in cinema B. The terminals also have a card reader for easier check in. Every year the card reader manufacturer produces an update for the devices. These updates are deployed on the terminals via the central configuration point.
 
-Because of GDPR purposes all communication between card reader and the terminal and the cloud and the terminals is encrypted. The applications are also only able to communicate with the cloud.
+Because of GDPR purposes all communication between card reader and the main terminal as well as between the terminal and the cloud is encrypted. The applications are also only able to communicate with the cloud.
 The cinema company also made sure that the terminal and application are secure and that only trusted applications run on the terminal.
 
 All terminals work independently from each other but run the same application code. Each month the design of the application is changed to represent new movies. The developers build a new image and push it to a registry. They then tell the system to deploy the new version.

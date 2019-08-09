@@ -1,7 +1,7 @@
 \subsection{Kubernetes Installation}
 The Kubernetes master installation is well documented and did not pose any troubles. For completion of this thesis I will briefly mention the additional components installed on the master. Kubernetes has no default networking implementation, thus I installed Flannel\cite{coreosFlannel:online}, one of the simplest and most widely used networking fabrics specifically designed for Kubernetes. It runs a small binary called \textit{flanneld} on each node and provides networking between nodes and pods\footnote{The specifics of Flannels networking are outside this thesis scope, for more information see \url{https://blog.laputa.io/kubernetes-flannel-networking-6a1cb1f8ec7c}}. For administrative purposes I also installed the Kubernetes Dashboard.
 
-The Raspberry Pi Foundation recently released an update to Raspbian (the RPi OS) called buster, which does dropped support of the aufs-dkms kernel modules, which are dependencies of kubeadm and containerd. The online community advised to avoid the dependency but if possible switch back to the older version of Raspbian called stretch. Out of time concerns, I switched back to the old version. 
+The Raspberry Pi Foundation recently released an update to Raspbian (the RPi OS) called buster, which does dropped support of the aufs-dkms kernel modules, which are dependencies of kubeadm and containerd. The online community advised in forums to avoid the dependency but if possible switch back to the older version of Raspbian called stretch. Out of time concerns, I switched back to the old version. 
 
 I switched the official Kubernetes kubelet with the kubelet binary from Ranchers K3s called Hyperkube. \Cref{fig:kubeBinaries} shows the size of the binary files of three most important components of Kubernetes, kubeadm, kubelet and kubectl.
 \begin{figure}[h!]
@@ -32,7 +32,7 @@ Flanneld and kube-proxy both use less than 1\% CPU and 1.3\% and 1.6\% of memory
     \centering
     \includegraphics[scale=1.6]{figures/kubeContainerResourceUsageCut.png}
     \vspace*{-0.3cm}
-    \caption[The Resource Usage of Kubernetes Containers.]{\\The command used is \textit{docker stats | grep -E '(ID|kube|flannel)'}.}
+    \caption[The Resource Usage of Kubernetes Containers.]{\\The command used is: \textit{docker stats | grep -E '(ID|kube|flannel)'}.}
     \label{fig:kubernetesResourceConsumptionCut}
 \end{figure}
 Flannel and kube-proxy consume 0.86\% and 1.96\% of the memory, respectively\footnote{flannel's limit is 50MB, hence the 16.02\% in the figure.}. The CPU usage of all containers is negligible at below 1\%. Adding up the numbers, after the installation Kubernetes uses 11.4\% of the CPU and 11.7\% of the total memory. This translates to 0.46GHz CPU usage, see \cref{eq:cpuTotal}, and 108.35MB memory usage, see \cref{eq:ramTotal}.

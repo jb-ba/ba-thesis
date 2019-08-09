@@ -16,10 +16,10 @@ The OSGi framework consists of a layered model shown in \cref{fig:osgiLayerModel
     \mycaption[The OSGi Layered Model.]{From the official OSGI documentation\cite{osgiFrameworkArchitec22:online}.}
     \label{fig:osgiLayerModel}
 \end{figure}
-The Service layer interconnects the bundles making it possible for them to communicate via plain old java objects (POJO).The Life-Cycle layer handles the state of an application (start, stop, update and uninstall). The Modules layer defines how an application can import and export code and the Execution Environemnt defines which methods and classes are available in a specific environemnt. Finally, the Security layer encompasses all other layers and handles for example code authentication, the digital signing of jar files, file access restrictions, certificates and more.\\
+The Service layer interconnects the bundles making it possible for them to communicate via plain old java objects (POJO).The Life-Cycle layer handles the state of an application (start, stop, update and uninstall). The Modules layer defines how an application can import and export code and the Execution Environemnt defines which methods and classes are available in a specific environment. Finally, the Security layer encompasses all other layers and handles for example code authentication, the digital signing of jar files, file access restrictions, certificates and more.\\
 To the authors best knowledge there are currently five frameworks implementing the OSGi model besides the Bosch IoT Gateway Software\cite{BoschIoT13:online}. In a blog entry from 2015 Bosch compares the OSGi technology to other gateway solutions and says it "is the only one with clearly defined specs and an open specification process behind them"\cite{boschBlogOSGi69:online}. Boschs solution is proprietary and tailor made for edge-computing devices with IIoT in mind\cite{OSGiforIoTBlog27:online}. It runs on Linux, Windows, mac OS, Android, and VxWorks and according to Bosch supports more than 40 different gateway hardware\cite{BoschIoT13:online}. 
 
-The software is stable at major version 9 and still under heavy development. It is presented as exemplary software by the OSGi Alliance for IoT Gateways \cite{exampleIoTGateweOSGi:online} and thus used in this report. Bosch provides the OSGi framework implementation for the gateways plus additional features in the cloud to ease the management of the gateways and store the accumulated data. Moreover, it supports a wide variety of communication protocls, BLE, ZigBee and MQTT, just to name a few. The main restriction is the JVM support for a protocol.  
+The software is stable at major version 9 and still under heavy development. It is presented as exemplary software by the OSGi Alliance for IoT gateways \cite{exampleIoTGateweOSGi:online} and thus used in this report. Bosch provides the OSGi framework implementation for the gateways plus additional features in the cloud to ease the management of the gateways and store the accumulated data. Moreover, it supports a wide variety of communication protocols, BLE, ZigBee and MQTT, just to name a few. The main restriction is the JVM support for a protocol.  
 
 \subsubsection{ioFog}
 ioFog is one of the older projects in this report, with the first official release in 2016\cite{ioFogMainBlog:online}. Similarly to the OSGi framework it provides a runtime environment for applications, mainly intended for microservices. In addition, it includes a message bus, dynamic configuration of the microservices, and remote debugging\cite{ioFogMainBlog:online}. It runs on all Linux distributions and only requires Docker to be installed. In their official system requirements they only recommed using a Raspberry Pi as a worker node and not to run the Controller and Connector infrastructure on it\cite{ioFOgQuickStart:online}.
@@ -31,11 +31,10 @@ ioFog is one of the older projects in this report, with the first official relea
     \mycaption[ioFog Cluster Architecture]{From the official Eclipse Youtube channel under \url{https://youtu.be/6_n-Yk8v27k}.}
     \label{fig:ioFogComponent}
 \end{figure}
-
 The ioAuthoring application and the ioFog instances provide orchestration and management for the microservices. They are the main interaction points between the administrator and the system.
 The fog computing software agent, called "ioFog", runs on various operating systems and provides a universal runtime for the IoT microservices. It includes Software Development Kits (SDKs) in multiple programming languages to provide developers with the convenience of programming against standardized objects. The communication between different ioFog instances is facilitated through an internetworking utility running on Linux, called "ComSat". Finally, for testing a tool ioFog provides a mocking resource to mimic the fog computing runtime.
 
-In a recent blog post Mike Milinkovich, the Executive Director of the Eclipse Foundation Inc., announced the initial availability of ioFog features that make any Kubernetes distribution edge-aware. He continuous saying that "these native Kubernetes enhancements are in the process of being contributed to the Eclipse ioFog open source project.". Hence these features are not available in the stable release as of the time of writing. But going forward the ioFog Kubernetes APIs would provide standardized way of communication between the Kubernetes API Server and the ioFog instance.
+In a recent blog post Mike Milinkovich, the Executive Director of the Eclipse Foundation Inc., announced the initial availability of ioFog features that make any Kubernetes distribution edge-aware. He continuous saying that "these native Kubernetes enhancements are in the process of being contributed to the Eclipse ioFog open source project". Hence these features are not available in the stable release as of the time of writing. But going forward the ioFog Kubernetes application programming interfaces (APIs) would provide standardized way of communication between the Kubernetes API Server and the ioFog instance.
 
 \subsubsection{Docker Edge Solution}
 Docker is commonly known for its containerization software and is often confused with containers themselves (like Google for search). The core container runtime, containerd, was donated by Docker to the Cloud Native Computing Foundry (CNCF) in 2017\cite{containerDonationDocker79:online} which manages and develops it now. The company Docker focuses on providing an ecosystem around containers making them easy to deploy, secure and replicate. Recently, Docker announced a new partnerships with ARM together with a new platform and strategy for edge devices.
@@ -47,19 +46,16 @@ Docker is commonly known for its containerization software and is often confused
     \caption{The Docker Edge Solution}
     \label{fig:dockerEdge}
 \end{figure}
+The solution consists of different products from its enterprise solution focusing on security, scalability, deployability and easy of use. The edge focus is on fault tolerance and platform support, hence the new partnership with ARM. A core component of the suit is the docker registry, which can be mirrored/replicated on many difference nodes for scaleability and fault tolerance. It can function without constant communication with the rest of the cluster, called swarm in docker. As edge devices often have limited disk space, docker only synchronizes promoted images on these nodes. These are signed images that are explicitly marked as production ready.
 
-
-The solution consists of different products from its enterprise solution focusing on security, scalability, deployability and easy of use. The edge focus is on fault tolerance and platform support, hence the new partnership with ARM. A core component of the suit is the docker registry, which can be mirrored/replicated on many difference nodes for scaleability and fault tolerance and shown in . It can function without constant communication with the rest of the cluster, called swarm in docker. As edge devices often have limited disk space, docker only synchronizes promoted images on these nodes. These are signed images that are explicitly marked as production ready.
-
-\cref{fig:dockerRegistryForIoT} shows registry management with mirrors inside a cluster.
+\Cref{fig:dockerRegistryForIoT} shows registry management with mirrors inside a cluster.
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth]{figures/docker-edge-computing-with-docker-enterprise.jpg}
     \caption{The Docker Registry Mirroring}
     \label{fig:dockerRegistryForIoT}
 \end{figure}
-
-Whereas the cloud registry is build for high availability (HA/LB), the edge registry is designed to have fault tolerance on it's own Internet access. It synchronizes itself when it has a connection but acts as a standalone component in case it does not.
+Whereas the cloud registry is build for high availability (HA/LB), the edge registry is designed to have fault tolerance on its own Internet access. It synchronizes itself when it has a connection but acts as a standalone component in case it does not.
 Importantly, the Docker Edge Solution is not one product but a bundle of Docker products to enable remote orchestration and management.
 
 \subsubsection{K3s}
@@ -68,16 +64,15 @@ On their k3s product page \url{https://k3s.io/} Rancher describes the fork as fo
 \begin{displayquote}
 \textit{Easy to install. A binary of less than 40 MB. Only 512 MB of RAM required to run.}
 \end{displayquote}
-K3s is not only significantly smaller than the full fledged Kubernetes install, but also requires significantly less resources at run time. It achieves this by slimming down Kubernetes by only including what they deemed necessary for the edge. Because of the huge popularity of Kubernetes, it needs to support legacy code, drivers etc. K3s is free to break compatibility and the developers instead focused on slimming down the code base much as possible. The lead developer, Darren Shepherd, said:
+K3s is not only significantly smaller than the full fledged Kubernetes install, but also requires significantly less resources at run time. It achieves this by slimming down Kubernetes by only including what they deemed necessary for the edge. Because of the huge popularity of Kubernetes, it needs to support legacy code, drivers etc. K3s is free to break compatibility and the developers instead focused on slimming down the code base as much as possible. The lead developer Darren Shepherd said:
 \begin{displayquote}
 \textit{"We took Kubernetes and ripped out every single feature we didn't want.\cite{k3sTalk:online}"}
 \\[1pt]
 \raggedleft{{\rm --- Darren Shepherd}}
 \end{displayquote}
+K3s also integrates all process required by Kubernetes, the Kubernetes master, Kubelet and containerd under one system process which requires less total memory.
 
-K3s also integrates all process required by Kubernete, the Kubernetes master, Kubelet and containerd under one system process which requires less total memory.
-
-Another important aspect of k3s is its purpose to run on single as well as multi-node clusters. This is in stark contrast to Kubernetes, which is intended to run inside a cluster and it's fault tolerance model is build around a multi-node cluster structure. Running a single node cluster is possible, but requires the tainting of the master node and is describe as "cheap and easy, but is not production grade" in the official documentation\cite{singleNodeKubernetesNotProductionDocumenhtation:online}.
+Another important aspect of k3s is its purpose to run on single as well as multi-node clusters. This is in stark contrast to Kubernetes, which is intended to run inside a cluster and its fault tolerance model is build around a multi-node cluster structure. Running a single node cluster is possible, but requires the tainting of the master node and is describe as "cheap and easy, but is not production grade" in the official documentation\cite{singleNodeKubernetesNotProductionDocumenhtation:online}.
 
 \subsubsection{Kubeedge}
 Kubeedge is another project inside the Kubernetes IoT Edge working group and thus build with Kubernetes in mind. It is a relatively young project to extend native containerized application orchestration and device management to the Edge. It is based on two parts, the cloud and the edge. It is mainly developed by Huawei, which at the time of writing could be reason for future complications because of recent US sanctions against the company.
@@ -89,20 +84,18 @@ The kubeedge system is shown in \cref{fig:kubeedgeStruct}.
     \mycaption[The Kubeedge System Design.]{From the official KubeEdge documentation\cite{kubeedgeDocumentation90:online}}
     \label{fig:kubeedgeStruct}
 \end{figure}
-
-The cloud part is built upon Kubernetes and provides support for application deployment, metadata synchronization and networking all through the Kubernetes API Server. The cloud and edge part communicate via web sockets. This means by design a good connection to the server is expected and the intend of the authors is to enable Fog computing. It is built upon Kubernetes and provides core infrastructure support for networking, application deployment and metadata synchronization between cloud and edge.\\
+The cloud part is built upon Kubernetes and provides support for application deployment, metadata synchronization and networking all through the Kubernetes API Server. The cloud and edge part communicate via web sockets. This means by design a good connection to the server is expected and the intend of the authors is to enable fog computing. It is built upon Kubernetes and provides core infrastructure support for networking, application deployment and metadata synchronization between cloud and edge.\\
 The edge part is not based on Kubernetes but uses similar concepts: Pods, volumes, events and more. It provides a life cycle management for containers and supports MQTT for communication for additional components. It also stores and synchronizes the device status to the cloud and has a query interface for local applications.
 
-\subsubsection{Conclusion}
-Only recently have industry behemoths like, Docker, Huawei, Bosch, Siemens, Red Hat, VMware and more\cite{K8sattheEdgeContectOnWorkingGroup:online} started to develop and, more importantly, concentrate their efforts on integrated IoT Gateway solutions. This lack of standardization is also acknowledged by the developers themselves ``While the problems at the IoT edge — connectivity, manageability, scalability, reliability, security — are being solved as point solutions by enterprises and ecosystem players, there is a need for a foundational industry-wide standard for managing distributed IoT workloads.''\cite{ioFogK8sBlog:online}.
+\subsubsection{Subconclusion}
+Only recently have industry behemoths like, Docker, Huawei, Bosch, Siemens, Red Hat, VMware and more\cite{K8sattheEdgeContectOnWorkingGroup:online} started to develop and, more importantly, concentrate their efforts on integrated IoT gateway solutions. The lack of standardization is also acknowledged by the developers themselves ``While the problems at the IoT edge — connectivity, manageability, scalability, reliability, security — are being solved as point solutions by enterprises and ecosystem players, there is a need for a foundational industry-wide standard for managing distributed IoT workloads.''\cite{ioFogK8sBlog:online}.
 
 \Cref{tab:shortSotaSoftware} shows how the different solutions analyzed in this section compare to each other in key aspects.
 % \footnote{An extended version can be found in the appendix.}
 \input{tables/sotaConclusionInText.tex}
+It is important to bear in mind, that the Bosch IoT solution as well as ioFog are significantly older than the other projects. Boschs IoT solution is based on the OSGi framework. It provides isolation evolving around the JVM. This enables it to be platform independent, that is as long as the OS provides a JVM. ioFog which is almost three years old as of time of writing (June 2019) and already relays on containers for its deployment. It is important to note that all solutions emphasize the abstraction and automation of deployments.
 
-It is important to bear in mind, that the Bosch IoT solution as well as ioFog are significantly older than the other projects. Boschs IoT solution is based on the OSGi framework. It provides isolation evolving around the JVM. This enables it to be platform independent, that is as long as the OS provides a JVM. ioFog which is almost three years old as of time of writing (June 2019) and already relays on containers, specifically a Docker runtime, for its deployment. It is important to note that all solutions emphasize the abstraction and automation of deployments.
-
-As the second last column shows all solutions, except for Docker Edge, use Kubernetes in one way or another as their orchestration platform and control plane tool. ioFog and Bosch IoT Edge are currently updating their solution while Kubeedge and K3s were designed from the ground up with Kubernetes in mind. K3s actually brings a full Kubernetes install to the edge.
+The second last column shows that all solutions, except for Docker Edge, use Kubernetes in one way or another as their orchestration platform and control plane tool. ioFog and Bosch IoT Edge are currently updating their solution while Kubeedge and K3s were designed from the ground up with Kubernetes in mind. K3s actually brings a full Kubernetes install to the edge.
 
 It is also important to note that all newer solutions, K3s and Kubeedge, are developed in the Go programming language\footnote{The Docker Edge Solution source code is not publicly available. It is probably also based on Go as it is the main language for the docker runtime but it is not sure.}. Older systems are mainly based on Java as it enables applications to run on every JVM supported platform. New solutions use containers giving developers freedom of programming language and providing even better isolation and deployment strategies. Docker points out that its solution runs on MacOS and Windows, however, both rely on Linux system calls.\footnote{Docker on Windows uses the WSL 2.0 in the future which translates Linux system calls to Windows system calls and increases performance a lot compared to emulated solutions as done on MacOS.}. In terms of protocol support the Bosch Solution is clearly ahead. It has a huge time advantage over new solutions but as containers get more popular their protocol support will grow as well.
 

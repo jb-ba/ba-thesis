@@ -18,13 +18,15 @@
 \setlength{\parindent}{8mm}
 
 \begin{document}
+\includepdf[pages=-]{aau/abstractAAU.pdf}
+\clearpage
 \input{cmds/titlePageReal.tex}
 % \maketitle
-\clearpage
-\includepdf[pages=-]{aau/baAbstractAAU.pdf}
 % \input{cmds/colophon.tex}
-% \clearpage
 \clearpage
+\includepdf[pages=-]{aau/colophon.pdf}
+\clearpage
+\pagenumbering{gobble}
 \input{cmds/acknowledgment.tex}
 \clearpage
 
@@ -49,6 +51,7 @@
 \clearpage
 \listoftables
 \vspace{5cm}
+\renewcommand{\lstlistlistingname}{List of Listings}
 \lstlistoflistings
 \clearpage
 
